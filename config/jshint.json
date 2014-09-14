@@ -1,0 +1,36 @@
+{
+  "browser": true
+, "camelcase": true
+, "curly": true
+, "devel": true
+, "eqeqeq": true
+, "eqnull": true
+, "forin": true
+, "globals": { "$": false
+             , "__dirname": false
+             , "angular": false
+             , "jQuery": false
+             , "beforeEach": false
+             , "CityShelf": true
+             , "describe": false
+             , "expect": false
+             , "exports": false
+             , "google": false
+             , "it": false
+             , "module": false
+             , "NProgress": false
+             , "require": false }
+, "immed": true
+, "latedef": true
+, "laxcomma": true
+, "maxdepth": 4
+, "maxparams": 4
+, "multistr": true
+, "newcap": true
+, "noarg": true
+, "quotmark": "single"
+, "strict": true
+, "trailing": true
+, "undef": true
+, "unused": true
+}

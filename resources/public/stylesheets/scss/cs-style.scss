@@ -1,0 +1,647 @@
+/*
+ * Styling for CityShelf.
+ * Author: Javier Lopez <javierlopez288@gmail.com>
+ * Author: Eric Weinstein <eric.q.weinstein@gmail.com>
+ */
+
+// Imports
+@import 'cs-fonts';
+
+// Variables
+$cs-darkgray-color: rgb(29, 30, 30);      /* #1d1e1e */
+$cs-green-color: rgb(0, 250, 159);        /* #00fa9f */
+$cs-lightgray-color: rgb(239, 239, 239);  /* #efefef */
+$cs-mediumgray-color: rgb(206, 206, 206); /* #cecece */
+$cs-blue-color: rgb(0, 0, 255);           /* #0000ff */
+
+$cs-margin-left: 1rem;
+$cs-margin-right: 1rem;
+
+$zIndex-1: 1;
+$zIndex-2: 20;
+$zIndex-3: 40;
+$zIndex-4: 60;
+$zIndex-5: 80;
+$zIndex-6: 100;
+
+// Mixins
+@mixin box-shadow($shadow-rgba) {
+  -webkit-box-shadow: $shadow-rgba;
+     -moz-box-shadow: $shadow-rgba;
+      -ms-box-shadow: $shadow-rgba;
+          box-shadow: $shadow-rgba;
+}
+
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+  -moz-transition: $transition-property $transition-time $method;
+  -ms-transition: $transition-property $transition-time $method;
+  -o-transition: $transition-property $transition-time $method;
+  transition: $transition-property $transition-time $method;
+}
+
+@mixin translate ($x, $y) {
+  -webkit-transform: translate ($x, $y);
+  -moz-transform: translate ($x, $y);
+  -ms-transform: translate ($x, $y);
+  -o-transform: translate ($x, $y);
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Breakpoints
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 70em) { @content ; }
+  }
+  @else if $point == laptop {
+    @media (min-width: 64em) { @content ; }
+  }
+  @else if $point == tablet {
+    @media (min-width: 50em) { @content ; }
+  }
+  @else if $point == phablet {
+    @media (min-width: 37.5em)  { @content ; }
+  }
+  @else if $point == mobileonly {
+    @media (max-width: 37.5em)  { @content ; }
+  }
+}
+
+// Main app
+body {
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  border-top: $cs-green-color 1em solid;
+  @include breakpoint(mobileonly) {
+    border-top: $cs-green-color .25em solid;
+  }
+  @include breakpoint(phablet) {
+    border-top: $cs-green-color .5em solid;
+  }
+  @include breakpoint(tablet) {
+    border-top: $cs-green-color .5em solid;
+  }
+  @include breakpoint(laptop) {
+    border-top: $cs-green-color 0.75em solid;
+  }
+  @include breakpoint(desktop) {
+    border-top: $cs-green-color 0.5em solid;
+  }
+}
+
+// Ionic overrides
+.bar {
+  height: inherit !important;
+  border: none !important;
+  background-color: rgba(255, 255, 255, 0) !important;
+  background-size: 0% 0px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.has-header {
+  top: 0 !important;
+}
+
+.icon {
+  font-size: 1.375rem !important;
+}
+
+.cs-icon {
+  color: $cs-blue-color !important;
+}
+
+.swappable-btn-left {
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: $zIndex-2;
+}
+
+.swappable-btn-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: $zIndex-1;
+}
+
+.swappable-bar {
+  left: 13%;
+  position: absolute;
+  top: 0;
+  z-index: $zIndex-1;
+}
+
+ion-content {;
+  margin-bottom: 0 !important;
+}
+
+.item {
+  width: 99%;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: $cs-mediumgray-color 2px solid;
+  margin-bottom: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 0 0 0 !important;
+}
+
+// Containers
+.cs-main-container{
+  width: 100%;
+  margin-top: 0 !important;
+  border-left: $cs-green-color 1em solid;
+  border-right: $cs-green-color 1em solid;
+  @include breakpoint(mobileonly) {
+    border-left: $cs-green-color .25em solid;
+    border-right: $cs-green-color .25em solid;
+  }
+  @include breakpoint(phablet) {
+    border-left: $cs-green-color .5em solid;
+    border-right: $cs-green-color .5em solid;
+  }
+  @include breakpoint(tablet) {
+    border-left: $cs-green-color .5em solid;
+    border-right: $cs-green-color .5em solid;
+  }
+  @include breakpoint(laptop) {
+    border-left: $cs-green-color .75em solid;
+    border-right: $cs-green-color .75em solid;
+  }
+  @include breakpoint(desktop) {
+    border-left: $cs-green-color .5em solid;
+    border-right: $cs-green-color .5em solid;
+  }
+}
+
+.cs-logo {
+  width: 25%;
+  padding-left: $cs-margin-left;
+  padding-top: 6%;
+  padding-bottom: 0.5em;
+  padding-right: 0.5em;
+  z-index: $zIndex-2;
+
+  @include transition(all, 0.3s, linear);
+  @include breakpoint(mobileonly) {
+    width: 25%;
+  }
+  @include breakpoint(phablet) {
+    width: 20%;
+  }
+  @include breakpoint(tablet) {
+    width: 15%;
+  }
+  @include breakpoint(desktop) {
+    width: 10%;
+  }
+}
+
+.cs-logo:hover {
+  background-color: $cs-green-color;
+}
+
+.cs-search-container {
+  width:100%;
+  z-index: $zIndex-3;
+}
+
+.cs-footer {
+  background-color: $cs-green-color !important;
+  color: $cs-darkgray-color !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  border: none !important;
+  position: fixed;
+}
+
+.cs-social-media {
+  background-color: none !important;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.cs-bar-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 98%;
+  position: fixed;
+  top: 0;
+  left: 1%;
+  z-index: $zIndex-6;
+}
+
+.list {
+  background-color: $cs-lightgray-color;
+}
+
+.result-title {
+  width: 100%;
+  float: left;
+}
+
+.result-author {
+  width: 70%;
+  float: left;
+}
+
+.result-price {
+  width: 25%;
+  float: right;
+  clear: left;
+}
+
+.result-store {
+  width: 100%;
+  float: left;
+}
+
+.result-author .result-store {
+  overflow: auto !important;
+  text-overflow: initial !important;
+  white-space: initial !important;
+}
+
+// Spacing
+.small-vertical-space {
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.one-vertical-space {
+  margin-top: 2rem;
+}
+
+.two-vertical-spaces {
+  margin-top: 4rem;
+}
+
+.cs-left-margin {
+  margin-left: $cs-margin-left;
+}
+
+.cs-right-margin {
+  margin-right: $cs-margin-right;
+}
+
+.logo-clear {
+  padding-top: 9rem;
+  @include breakpoint(mobileonly) {
+    padding-top: 9rem;
+  }
+  @include breakpoint(phablet) {
+    padding-top: 9rem;
+  }
+  @include breakpoint(tablet) {
+  }
+  @include breakpoint(laptop) {
+  }
+  @include breakpoint(desktop) {
+  }
+}
+
+.nav-clear {
+  padding-top: 6rem;
+}
+
+.bottom-clear {
+  padding-bottom: 6rem;
+  margin-bottom: 0;
+}
+
+/* Type Styles */
+
+// Weights
+.wf-standard {
+  font-family: 'CooperHewitt-Light', helvetica, arial;
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  webkit-font-smoothing: antialiased;
+}
+
+.wf-standard-italic {
+  font-family: 'CooperHewitt-LightItalic', helvetica, arial;
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  webkit-font-smoothing: antialiased;
+}
+
+.wf-standard-heavy {
+  font-family: 'CooperHewitt-Book', helvetica, arial !important;
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  webkit-font-smoothing: antialiased;
+}
+
+.wf-bold {
+  font-family: 'CooperHewitt-Bold', helvetica, arial;
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  webkit-font-smoothing: antialiased;
+}
+
+// Sizes
+.type-small {
+  font-size: 0.55rem !important;
+}
+
+.type-base {
+  font-size: 1rem !important;
+  line-height: 1.2rem !important;
+}
+
+.type-large {
+  font-size: 1.0rem !important;
+  line-height: 1.2rem !important;
+}
+
+.type-larger {
+  font-size: 1.375rem;
+  line-height: 1.75rem;
+}
+
+i.large-spinner.ion-loading-c {
+  font-size: 3em;
+}
+
+.type-display {
+}
+
+// Alignment
+.align-center {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+// Form
+.form-field {
+  -webkit-appearance: none;
+  border-radius: 0px;
+  font-family: 'CooperHewitt-BookItalic', Helvetica, Arial, sans-serif;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 88%;
+  font-size: 1em;
+  height: 50px !important;
+  line-height: 75px;
+  padding-left: $cs-margin-left !important;
+  border: 1px solid transparent;
+  border-bottom: 3px solid $cs-green-color !important;
+  background: $cs-lightgray-color;
+  margin-top: 0 !important;
+  color: black;
+  float: left;
+  margin-left: 0 !important;
+
+  @include transition (all, 0.3s, linear);
+
+  @include breakpoint(mobileonly) {
+    font-size: 0.875em;
+    height: 50px;
+    padding-left: 20px;
+    vertical-align: center;
+    line-height: 1.35em;
+  }
+
+  @include breakpoint(phablet) {
+    height:50px;
+  }
+
+  @include breakpoint(tablet) {
+    height: 50px;
+    line-height: 1.25em;
+  }
+}
+
+form input:focus {
+  @include box-shadow(0px 0px 25px 0px rgba(0, 0, 0, 0.08));
+  outline: none;
+}
+
+form input:focus::-webkit-input-placeholder {
+  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  color: $cs-darkgray-color;
+}
+
+form input:focus:-moz-placeholder {
+  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  color: $cs-darkgray-color;
+}
+
+form input:focus::-ms-placeholder {
+  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  color: $cs-darkgray-color;
+}
+
+form input::-webkit-input-placeholder {
+  color: #777777;
+}
+
+form input::-moz-placeholder {
+  color: #777777;
+}
+
+form input:-ms-input-placeholder {
+  color: #777777;
+}
+
+form .search-button:hover {
+  background-color: $cs-green-color;
+  color: $cs-darkgray-color;
+}
+
+// Buttons
+
+.cs-search-btn {
+  font-family: 'CooperHewitt-Book', Helvetica, Arial, sans-serif;
+  text-align: center;
+  font-size: 1rem;
+  color: $cs-darkgray-color;
+  width: 12%;
+  height: 75px;
+  background-color: white  /* $cs-green-color */;
+  border: 3px solid $cs-green-color ;
+  right: 0;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  top: 0;
+
+  @include breakpoint(mobileonly) {
+    font-size: 0.875rem;
+    height: 50px;
+    padding-left: 0.45em;
+    padding-right: 0.45em;
+    border: 2px solid $cs-green-color;
+    background-color: $cs-green-color;
+    color: white;
+    font-family: 'CooperHewitt-Semibold';
+  }
+
+  @include breakpoint(phablet) {
+    height: 50px;
+  }
+
+  @include breakpoint(tablet) {
+    height: 50px;
+  }
+}
+
+.social-btn {
+  background-repeat: no-repeat;
+  background-size: 65%;
+  width: 23%;
+  background-position: center;
+  background-color: white;
+  border: none;
+}
+
+#facebook {
+  background-image: url('../img/cs-facebook.svg');
+}
+
+#twitter {
+  background-image: url('../img/cs-twitter.svg');
+}
+
+#instagram {
+  background-image: url("../img/cs-instagram.svg");
+}
+
+#email {
+  background-image: url("../img/cs-email.svg");
+}
+
+.cs-on-btn {
+  background-color: $cs-green-color !important;
+  color: $cs-blue-color;
+  border-radius: 0 !important;
+  border: none !important;
+  text-align: left;
+}
+
+.cs-ui-btn {
+  background-color: $cs-green-color !important;
+  color: $cs-blue-color;
+  border-radius: 0 !important;
+  border-right: 1px white solid !important;
+  border-bottom: none !important;
+  text-align: left;
+  padding-top: 3px !important;
+}
+
+.back-btn {
+  width: 14%;
+  line-height: 50px;
+  height: 50px;
+  border-top: none !important;
+  border-left: none !important;
+}
+
+.item-btn-bar {
+  background-color: $cs-lightgray-color;
+  border-bottom: 2px $cs-mediumgray-color solid;
+  width: 100% !important;
+  height: 50px;
+  line-height: 50px;
+
+  .no-button{
+    border-top: 2px $cs-lightgray-color solid;
+    border-right: none;
+    border-left: 2px $cs-lightgray-color solid;
+    border-bottom: none;
+    color: $cs-darkgray-color;
+    background-color: white;
+    cursor: auto !important;
+    text-transform: uppercase;
+  }
+
+  .button{
+    border-top: none;
+    border-right: 2px white solid;
+    border-left: none;
+    border-bottom: none;
+    color: $cs-blue-color;
+  }
+}
+
+// Main
+.full-width {
+  width: 86%;
+}
+
+#search-by-btns {
+  margin-top: 15%;
+  clear: left;
+}
+
+#search-by-btns button {
+  border-color: white;
+  text-align: left;
+  background-color: white;
+  border-bottom: 2px $cs-mediumgray-color solid;
+}
+
+// Search
+#search-text {
+  line-height: 50px !important;
+  width: 86%;
+  margin-right: 0;
+  float: right;
+}
+
+.book-img-wrapper {
+  display: inline-block;
+  height: 100px;
+  width: 72px;
+  margin-bottom: 1.5rem;
+  margin-right: 1rem;
+  float: left;
+}
+
+.book-img-wrapper img {
+  height: auto;
+  width: 100%;
+  border-right: 1px $cs-lightgray-color solid;
+  border-bottom: 1px $cs-lightgray-color solid;
+}
+
+.book-copy-wrapper {
+  float: left;
+  width: 75%;
+}
+
+// Google Maps
+.angular-google-map-container {
+  height: 8em;
+}

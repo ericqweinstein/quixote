@@ -1,0 +1,46 @@
+<nav class="cs-bar-container">
+  <form name='searchForm' data-ng-controller='MainCtrl'>
+    <input type='text' class='form-field swappable-bar' placeholder='Title, author, ISBN' data-ng-model='form.book' size='16' />
+    <button class='cs-search-btn swappable-btn-right' data-ng-click='search()'>
+      <i class='icon ion-search i cs-icon'></i>
+    </button>
+  </form>
+
+  <a class='button icon-left ion-chevron-left cs-ui-btn back-btn swappable-btn-left' href='/'></a>
+  <button id='search-text' class='button icon-right ion-close full-width cs-on-btn wf-standard-heavy type-large swappable-bar' data-ng-click='showSearch = !showSearch' data-ng-show='showSearch'>
+    {{ searchQuery | capitalize }}
+  </button>
+  <div id='search-by-btns' class='button-bar wf-standard type-base'>
+    <button class='button' data-ng-class='{ selected: option === selected }' data-ng-click="select(option)" data-ng-repeat='option in options'>
+      {{ option | capitalize }}
+    </button>
+  </div>
+</nav>
+
+<ion-content>
+  <ul class='cs-main-container list nav-clear'>
+    <li class='item' data-ng-repeat="result in results | orderBy: [sortBy(result), 'availability']">
+      <div>
+        <div class='book-img-wrapper'>
+          <a href='{{ result.bookLink }}' target='_blank'><img ng-src='{{ result.img }}' /></a>
+        </div>
+        <div class='book-copy-wrapper'>
+          <p class='wf-bold type-large result-title'>{{ result.title | truncate }}</p>
+          <p class='wf-standard type-large result-price'>{{ result.price | currency:'$' }}</p>
+          <p class='wf-standard-italic type-base result-author'>{{ result.author }}</p>
+          <p class='wf-standard type-base result-store'>@ {{ result.storeName }}</p>
+        </div>
+      </div>
+      <div class='button-bar bar-stable item-btn-bar wf-standard-heavy type-small'>
+        <button class='no-button'>{{ result.availability }}</button>
+        <a href='{{ result.phone }}' class='button icon-left ion-ios7-telephone-outline wf-standard-heavy type-small'>TO CONFIRM</a>
+        <button class='button wf-standard-heavy type-small' data-ng-click='showMap = !showMap'>
+          {{ showMap? 'HIDE' : 'SHOW' }} MAP
+        </button>
+      </div>
+      <google-map center='result.map.center' zoom='result.map.zoom' data-ng-show='showMap'>
+        <marker coords='result.map.center' idKey='1'></marker>
+      </google-map>
+    </li>
+  <ul>
+</ion-content>

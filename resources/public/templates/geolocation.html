@@ -1,0 +1,13 @@
+<ion-content>
+  <div class='cs-main-container small-vertical-space'>
+    <p class='wf-standard type-larger cs-left-margin cs-right-margin'>
+      Knowing your location helps us find the best bookstores around you. Please allow us to use your current location, or enter a location below.
+    </p>
+    <form name='geolocationForm' id='geolocation'>
+      <input type='text' class='form-field' placeholder='Enter an address or zipcode' data-ng-model='form.location' />
+      <button class='cs-search-btn' data-ng-click='geolocate()'>
+        <i class='icon ion-location i cs-icon'></i>
+      </button>
+    </form>
+  </div>
+</ion-content>

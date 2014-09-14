@@ -1,0 +1,21 @@
+# General
+todo.md
+.sass-cache/
+
+# Docs
+js_doc/
+doc/
+
+# Clojures
+/target
+/classes
+/checkouts
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/.lein-*
+/.nrepl-port
+
+# JavaScripts
+node_modules/
