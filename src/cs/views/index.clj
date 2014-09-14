@@ -4,8 +4,9 @@
 (ns cs.views.index
   (:use [hiccup.page :only (html5 include-css include-js)]))
 
-(defn index [title]
+(defn index
   "Provides the base CityShelf view."
+  [title]
   (html5 {:lang "en" :data-ng-app "CityShelf"}
          [:head
           [:title title]

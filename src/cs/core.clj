@@ -15,16 +15,18 @@
             [cs.filter :refer [update remove-unavailable]]
             [cs.views.index :as home]))
 
-(defn config [filename]
+(defn config
   "Loads the configuration file."
+  [filename]
   (with-open [r (io/reader filename)]
     (read (java.io.PushbackReader. r))))
 
 (def store-data
   (config "conf.clj"))
 
-(defn scrape [store query]
+(defn scrape
   "Generates a JSON payload from the scraped URL."
+  [store query]
 
   ; The Strand is a special snowflake; the rest of our bookstores
   ; all use the same ABA-based Apache Solr search solution. (EW 5 Sep 2014)
@@ -61,7 +63,8 @@
   "Handler helper function."
   (-> cs-routes compojure.handler/api))
 
-(defn -main [& args]
+(defn -main
   "Starts the web server."
+  [& args]
   (let [port (Integer. (get (System/getenv) "PORT" "8080"))]
     (run-jetty #'handler {:port port})))

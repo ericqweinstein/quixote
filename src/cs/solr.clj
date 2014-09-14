@@ -5,12 +5,14 @@
   (:require [clojure.string :as string]
             [net.cgrand.enlive-html :as html]))
 
-(defn fetch-url [url]
+(defn fetch-url
   "Creates an Enlive HTML resource from the provided URL string."
+  [url]
   (html/html-resource (java.net.URL. url)))
 
-(defn search [store query]
+(defn search
   "Generates a JSON payload from sites powered by Apache Solr."
+  [store query]
   (let [url (fetch-url (str (:storeLink store) "/search/apachesolr_search/" query))
         title        (map html/text (html/select url [:.abaproduct-title :a]))
         author       (map #(string/trim %) (map html/text (html/select url [:.abaproduct-authors])))

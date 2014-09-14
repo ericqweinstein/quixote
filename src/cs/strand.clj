@@ -5,18 +5,21 @@
   (:require [clojure.string :as string]
             [net.cgrand.enlive-html :as html]))
 
-(defn fetch-url [url]
+(defn fetch-url
   "Creates an Enlive HTML resource from the provided URL string."
+  [url]
   (html/html-resource (java.net.URL. url)))
 
 ; The Strand doesn't provide availability on the search page,
 ; so we have to check each product detail page individually. (EW 5 Sep 2014)
-(defn get-availability [link]
+(defn get-availability
   "Visits a product detail page from the store search and retrieves the availability."
+  [link]
   (map #(string/trim %) (map html/text (html/select (fetch-url link) [:.odd :.column-location]))))
 
-(defn search [store query]
+(defn search
   "Generates a JSON payload for The Strand."
+  [store query]
   (let [url (fetch-url (str (:storeLink store) "/index.cfm?fuseaction=search.results&includeOutOfStock=0&searchString=" query))
         title        (map #(string/trim %) (map html/text (html/select url [:.info :h3 :a])))
         author       (map html/text (html/select url [:.product-author :a]))
