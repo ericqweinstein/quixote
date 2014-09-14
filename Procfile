@@ -1,1 +1,1 @@
-web: lein trampoline run -m core.clj $PORT
+web: lein trampoline run $PORT

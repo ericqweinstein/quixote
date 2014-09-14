@@ -61,7 +61,7 @@
   "Handler helper function."
   (-> cs-routes compojure.handler/api))
 
-(defn -main
+(defn -main [& args]
   "Starts the web server."
-  [& args]
-  (run-jetty #'handler {:port 8080}))
+  (let [port (Integer. (get (System/getenv) "PORT" "8080"))]
+    (run-jetty #'handler {:port port})))

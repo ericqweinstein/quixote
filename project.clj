@@ -17,4 +17,5 @@
                    :plugins [[lein-midje "3.1.1"]
                              [codox "0.8.10"]]
                    :dependencies [[midje "1.6.3"]]}
-             :uberjar {:aot :all}})
+             :uberjar {:aot :all}}
+  :min-lein-version "2.0.0")
