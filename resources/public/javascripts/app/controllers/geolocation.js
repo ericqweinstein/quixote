@@ -8,25 +8,6 @@ CityShelf.controller('GeolocationCtrl', ['$scope', '$location', 'Geolocation', f
   'use strict';
 
   /**
-   * Retrieves the user's location via the
-   * HTML5 Geolocation API and sets it on
-   * the Geolocation service.
-   * @method
-   */
-  $scope.setLocation = function() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        Geolocation.set(position.coords.latitude
-                      , position.coords.longitude);
-
-        return $location.path('/search');
-      });
-    }
-  };
-
-  $scope.setLocation();
-
-  /**
    * Initializes the form data object we'll
    * use to submit the user's location to
    * Google's Geocoding service if the user
