@@ -6,7 +6,7 @@
   :url "http://www.cityshelf.com"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [liberator "0.12.1"]
-                 [compojure "1.1.8"]
+                 [compojure "1.1.9"]
                  [ring/ring-core "1.3.1"]
                  [ring/ring-jetty-adapter "1.3.1"]
                  [enlive "1.1.5"]
@@ -15,7 +15,12 @@
   :target-path "target/%s"
   :profiles {:dev {
                    :plugins [[lein-midje "3.1.1"]
-                             [codox "0.8.10"]]
+                             [codox "0.8.10"]
+                             [lein-ancient "0.5.5"]
+                             [lein-kibit "0.0.8"]
+                             [lein-bikeshed "0.1.8"]]
                    :dependencies [[midje "1.6.3"]]}
              :uberjar {:aot :all}}
+  :aliases {"lint" ^{:doc "Lint and test all the things"}
+            ["do" "ancient," "kibit," "bikeshed"]}
   :min-lein-version "2.0.0")
