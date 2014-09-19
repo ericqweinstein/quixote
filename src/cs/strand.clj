@@ -26,7 +26,7 @@
         price        (map #(subs % 1) (map string/trim (map html/text (html/select url [:.price :span]))))
         image        (map #(get-in % [:attrs :src]) (html/select url [:.image :img]))
         link         (map #(get-in % [:attrs :href]) (html/select url [:.info :h3 :a]))
-        availability (map #(first %) (map #(get-availability %) link))]
+        availability (map first (map get-availability link))]
     (map #(merge store {:title %1
                         :author %2
                         :price %3

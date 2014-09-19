@@ -26,4 +26,4 @@
 (defn remove-unavailable
   "Removes a book from search results when it is unavailable."
   [store-data]
-  (filter #(available? %) store-data))
+  (filter available? store-data))
