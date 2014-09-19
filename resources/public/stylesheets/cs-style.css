@@ -412,27 +412,6 @@ form input:focus {
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.08);
   outline: none; }
 
-form input:focus::-webkit-input-placeholder {
-  transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  color: #1d1e1e; }
-
-form input:focus:-moz-placeholder {
-  transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  color: #1d1e1e; }
-
-form input:focus::-ms-placeholder {
-  transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  color: #1d1e1e; }
-
 form input::-webkit-input-placeholder {
   color: #777777; }
 

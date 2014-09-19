@@ -437,30 +437,6 @@ form input:focus {
   outline: none;
 }
 
-form input:focus::-webkit-input-placeholder {
-  transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  color: $cs-darkgray-color;
-}
-
-form input:focus:-moz-placeholder {
-  transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  color: $cs-darkgray-color;
-}
-
-form input:focus::-ms-placeholder {
-  transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  color: $cs-darkgray-color;
-}
-
 form input::-webkit-input-placeholder {
   color: #777777;
 }
