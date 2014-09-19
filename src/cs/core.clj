@@ -22,6 +22,7 @@
     (read (java.io.PushbackReader. r))))
 
 (def store-data
+  "Store data."
   (config "conf.clj"))
 
 (defn scrape
@@ -40,6 +41,7 @@
   :handle-ok (fn [_] (scrape store query)))
 
 (defroutes cs-routes
+  "CityShelf routes."
   ; Static assets.
   (route/files "/" {:root "resources/public"})
 

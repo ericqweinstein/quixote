@@ -22,5 +22,5 @@
                    :dependencies [[midje "1.6.3"]]}
              :uberjar {:aot :all}}
   :aliases {"lint" ^{:doc "Lint and test all the things"}
-            ["do" "ancient," "kibit," "bikeshed"]}
+            ["do" "ancient," "kibit," "bikeshed" "-m135"]}
   :min-lein-version "2.0.0")
