@@ -61,7 +61,7 @@
 
 (def handler
   "Handler helper function."
-  (-> cs-routes compojure.handler/api))
+  (compojure.handler/api cs-routes))
 
 (defn -main
   "Starts the web server."
