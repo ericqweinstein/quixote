@@ -7,7 +7,7 @@
 (defn available?
   "Checks whether a book is available."
   [book]
-  (not (= (:availability book) "Unavailable")))
+  (not= (:availability book) "Unavailable"))
 
 (defn normalize
   "Normalizes availability language across bookstores."
