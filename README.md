@@ -32,9 +32,10 @@ CityShelf currently lives on Heroku at http://cityshelf.herokuapp.com/.
 1. Branch (`git checkout -b fancy-new-feature`)
 2. Commit (`git commit -m "Fanciness!"`)
 3. Lint and test the client (`grunt`)
-4. Test the API (`lein midje`)
-5. Push (`git push origin fancy-new-feature`)
-6. Ye Olde Pulle Request
+4. Lint the API (`lein lint`)
+5. Test the API (`lein midje`)
+6. Push (`git push origin fancy-new-feature`)
+7. Ye Olde Pulle Request
 
 ## Miscellaneous
 You can generate documentation with `grunt jsdoc` (JavaScript) and `lein doc` (Clojure).
