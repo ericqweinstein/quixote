@@ -176,6 +176,10 @@ ion-content {
   margin-left: auto;
   margin-right: auto;
   padding: 1rem 0 0 0 !important; }
+  @media (min-width: 70em) {
+    .item {
+      display: inline-block;
+      width: 50%; } }
 
 .cs-main-container {
   border-left: #00fa9f 1em solid;
@@ -366,6 +370,9 @@ ion-content {
 
 i.large-spinner.ion-loading-c {
   font-size: 3em; }
+  @media (min-width: 70em) {
+    i.large-spinner.ion-loading-c {
+      margin-right: 25%; } }
 
 .align-center {
   display: block;
