@@ -523,16 +523,23 @@ form .search-button:hover {
 }
 
 .social-btn {
+  background-color: white;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: 65%;
-  width: 23%;
-  background-position: center;
-  background-color: white;
   border: none;
+  width: 23%;
+  z-index: $zIndex-2;
 
   @include breakpoint(desktop) {
     margin-top: 30%;
     width: 60px;
+  }
+}
+
+@media only screen and (max-width: 64em) {
+  .social-btns-search {
+    display: none;
   }
 }
 

@@ -486,17 +486,21 @@ form .search-button:hover {
       width: 50px; } }
 
 .social-btn {
+  background-color: white;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: 65%;
+  border: none;
   width: 23%;
-  background-position: center;
-  background-color: white;
-  border: none; }
+  z-index: 20; }
   @media (min-width: 70em) {
     .social-btn {
       margin-top: 30%;
       width: 60px; } }
 
+@media only screen and (max-width: 64em) {
+  .social-btns-search {
+    display: none; } }
 #facebook {
   background-image: url("../img/cs-facebook.svg"); }
 
