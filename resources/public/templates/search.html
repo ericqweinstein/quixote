@@ -1,4 +1,4 @@
-<nav class="cs-bar-container">
+<nav class='cs-bar-container'>
   <form name='searchForm' data-ng-controller='MainCtrl'>
     <input type='text' class='form-field swappable-bar' placeholder='Title, author or ISBN' data-ng-model='form.book' size='16' />
     <button class='cs-search-btn swappable-btn-right' data-ng-click='search()'>
@@ -11,7 +11,7 @@
     {{ searchQuery | capitalize }}
   </button>
   <div id='search-by-btns' class='button-bar wf-standard type-base'>
-    <button class='button' data-ng-class='{ selected: option === selected }' data-ng-click="select(option)" data-ng-repeat='option in options'>
+    <button class='button' data-ng-class='{ selected: option === selected }' data-ng-click='select(option)' data-ng-repeat='option in options'>
       {{ option | capitalize }}
     </button>
   </div>
