@@ -178,10 +178,10 @@ ion-content {
   padding: 1rem 0 0 0 !important; }
 
 .cs-main-container {
-  width: 100%;
-  margin-top: 0 !important;
   border-left: #00fa9f 1em solid;
-  border-right: #00fa9f 1em solid; }
+  border-right: #00fa9f 1em solid;
+  margin-top: 0 !important;
+  width: 100%; }
   @media (max-width: 37.5em) {
     .cs-main-container {
       border-left: #00fa9f 0.25em solid;
@@ -226,14 +226,18 @@ ion-content {
       width: 15%; } }
   @media (min-width: 70em) {
     .cs-logo {
+      border: 2px solid #00fa9f;
+      margin: 3% 0 0 3%;
+      padding: 2%;
       width: 10%; } }
-
-.cs-logo:hover {
-  background-color: #00fa9f; }
 
 .cs-search-container {
   width: 100%;
   z-index: 40; }
+  @media (min-width: 70em) {
+    .cs-search-container {
+      float: right;
+      width: 75%; } }
 
 .cs-footer {
   background-color: #00fa9f !important;
@@ -245,8 +249,11 @@ ion-content {
 
 .cs-social-media {
   background-color: none !important;
-  width: 90%;
-  margin-left: 5%; }
+  margin-left: 5%;
+  width: 90%; }
+  @media (min-width: 70em) {
+    .cs-social-media {
+      margin-left: 1%; } }
 
 .cs-bar-container {
   background-color: rgba(255, 255, 255, 0.9);
@@ -465,6 +472,10 @@ form .search-button:hover {
   background-position: center;
   background-color: white;
   border: none; }
+  @media (min-width: 70em) {
+    .social-btn {
+      margin-top: 30%;
+      width: 60px; } }
 
 #facebook {
   background-image: url("../img/cs-facebook.svg"); }
@@ -526,6 +537,13 @@ form .search-button:hover {
 .full-width {
   width: 86%; }
 
+#about-us {
+  display: none; }
+  @media (min-width: 70em) {
+    #about-us {
+      display: block;
+      width: 80%; } }
+
 #search-by-btns {
   margin-top: 15%;
   clear: left; }
@@ -536,11 +554,20 @@ form .search-button:hover {
   background-color: white;
   border-bottom: 2px #cecece solid; }
 
+.selected {
+  color: #00fa9f !important;
+  border-bottom: 2px #00fa9f solid !important; }
+
+@media (min-width: 70em) {
+  #tagline {
+    float: right;
+    width: 75%; } }
+
 #search-text {
+  float: right;
   line-height: 50px !important;
-  width: 86%;
   margin-right: 0;
-  float: right; }
+  width: 86%; }
 
 .book-img-wrapper {
   display: inline-block;

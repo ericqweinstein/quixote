@@ -161,10 +161,10 @@ ion-content {;
 
 // Containers
 .cs-main-container{
-  width: 100%;
-  margin-top: 0 !important;
   border-left: $cs-green-color 1em solid;
   border-right: $cs-green-color 1em solid;
+  margin-top: 0 !important;
+  width: 100%;
   @include breakpoint(mobileonly) {
     border-left: $cs-green-color .25em solid;
     border-right: $cs-green-color .25em solid;
@@ -206,17 +206,21 @@ ion-content {;
     width: 15%;
   }
   @include breakpoint(desktop) {
+    border: 2px solid $cs-green-color;
+    margin: 3% 0 0 3%;
+    padding: 2%;
     width: 10%;
   }
-}
-
-.cs-logo:hover {
-  background-color: $cs-green-color;
 }
 
 .cs-search-container {
   width:100%;
   z-index: $zIndex-3;
+
+  @include breakpoint(desktop) {
+    float: right;
+    width: 75%;
+  }
 }
 
 .cs-footer {
@@ -230,8 +234,12 @@ ion-content {;
 
 .cs-social-media {
   background-color: none !important;
-  width: 90%;
   margin-left: 5%;
+  width: 90%;
+
+  @include breakpoint(desktop) {
+    margin-left: 1%;
+  }
 }
 
 .cs-bar-container {
@@ -380,9 +388,6 @@ i.large-spinner.ion-loading-c {
   font-size: 3em;
 }
 
-.type-display {
-}
-
 // Alignment
 .align-center {
   display: block;
@@ -455,7 +460,6 @@ form .search-button:hover {
 }
 
 // Buttons
-
 .cs-search-btn {
   font-family: 'CooperHewitt-Book', Helvetica, Arial, sans-serif;
   text-align: center;
@@ -500,6 +504,11 @@ form .search-button:hover {
   background-position: center;
   background-color: white;
   border: none;
+
+  @include breakpoint(desktop) {
+    margin-top: 30%;
+    width: 60px;
+  }
 }
 
 #facebook {
@@ -576,6 +585,14 @@ form .search-button:hover {
   width: 86%;
 }
 
+#about-us {
+  display: none;
+  @include breakpoint(desktop) {
+    display: block;
+    width: 80%;
+  }
+}
+
 #search-by-btns {
   margin-top: 15%;
   clear: left;
@@ -588,12 +605,24 @@ form .search-button:hover {
   border-bottom: 2px $cs-mediumgray-color solid;
 }
 
+.selected {
+  color: $cs-green-color !important;
+  border-bottom: 2px $cs-green-color solid !important;
+}
+
+#tagline {
+  @include breakpoint(desktop) {
+    float: right;
+    width: 75%;
+  }
+}
+
 // Search
 #search-text {
-  line-height: 50px !important;
-  width: 86%;
-  margin-right: 0;
   float: right;
+  line-height: 50px !important;
+  margin-right: 0;
+  width: 86%;
 }
 
 .book-img-wrapper {

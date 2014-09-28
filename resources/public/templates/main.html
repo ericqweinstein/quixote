@@ -1,17 +1,15 @@
 <ion-header-bar>
-  <div class="cs-logo">
-    <a href="">
-    <img src="/img/cs_logo.svg">
+  <div class='cs-logo'>
+    <img src='/img/cs_logo.svg' />
   </div>
-    </a>
 </ion-header-bar>
 
 <ion-content>
-  <div class="cs-main-container logo-clear">
-    <h1 class="wf-bold type-larger cs-left-margin">Go local for books!</h1>
-    <div class="cs-search-container one-vertical-space">
-      <form name='searchForm' id='search' class="validate" style="opacity: 1; transform: translate(0px, 0px);">
-        <input type='text' class='form-field' placeholder='Title, author or ISBN' data-ng-model='form.book'size="16" />
+  <div class='cs-main-container logo-clear'>
+    <h1 class='wf-bold type-larger cs-left-margin' id='tagline'>Go local for books!</h1>
+    <div class='cs-search-container one-vertical-space'>
+      <form name='searchForm' id='search' class='validate' style='opacity: 1; transform: translate(0px, 0px);'>
+        <input type='text' class='form-field' placeholder='Title, author or ISBN' data-ng-model='form.book' size='16' />
         <button class='cs-search-btn' data-ng-click='search()'>
           <i class='icon ion-search i cs-icon'></i>
         </button>
@@ -19,6 +17,20 @@
       <p class='wf-standard type-larger cs-left-margin cs-right-margin one-vertical-space'>
         Type in the book you want. We'll show you which bookstore near you has it in stock.
       </p>
+      <div class='wf-standard cs-left-margin cs-right-margin one-vertical-space type-large' id='about-us'>
+        <p>
+          We're book lovers, plain and simple. And we heart bookstores. We love browsing through staff picks, brushing elbows with fellow readers, stumbling upon new authors on the shelves.
+        </p>
+        <p>
+          But too many bookstores are struggling to keep their doors open. Well, we wanted to change that. So we created an easy way for people to source books locally. We are in beta right now so if you have any feedback, please click the feedback button to <a href='mailto:beta@cityshelf.com'>e-mail us</a>.
+        </p>
+        <p>
+          Happy reading,
+        </p>
+        <p>
+          The CityShelf team
+        </p>
+      </div>
     </div>
     <i class='icon ion-loading-c large-spinner align-center' data-ng-show='loading'></i>
     <div class='cs-social-media one-vertical-space bottom-clear' id='media-btns'>
