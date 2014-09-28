@@ -21,12 +21,12 @@
   "Generates a JSON payload for The Strand."
   [store query]
   (let [url (fetch-url (str (:storeLink store) "/index.cfm?fuseaction=search.results&includeOutOfStock=0&searchString=" query))
-        title        (map #(string/trim %) (map html/text (html/select url [:.info :h3 :a])))
-        author       (map html/text (html/select url [:.product-author :a]))
-        price        (map #(subs % 1) (map string/trim (map html/text (html/select url [:.price :span]))))
-        image        (map #(get-in % [:attrs :src]) (html/select url [:.image :img]))
-        link         (map #(get-in % [:attrs :href]) (html/select url [:.info :h3 :a]))
-        availability (map first (map get-availability link))]
+        title        (pmap #(string/trim %) (map html/text (html/select url [:.info :h3 :a])))
+        author       (pmap html/text (html/select url [:.product-author :a]))
+        price        (pmap #(subs % 1) (map string/trim (map html/text (html/select url [:.price :span]))))
+        image        (pmap #(get-in % [:attrs :src]) (html/select url [:.image :img]))
+        link         (pmap #(get-in % [:attrs :href]) (html/select url [:.info :h3 :a]))
+        availability (pmap first (map get-availability link))]
     (map #(merge store {:title %1
                         :author %2
                         :price %3

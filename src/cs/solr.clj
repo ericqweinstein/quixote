@@ -14,12 +14,12 @@
   "Generates a JSON payload from sites powered by Apache Solr."
   [store query]
   (let [url (fetch-url (str (:storeLink store) "/search/apachesolr_search/" query))
-        title        (map html/text (html/select url [:.abaproduct-title :a]))
-        author       (map #(string/trim %) (map html/text (html/select url [:.abaproduct-authors])))
-        price        (map #(subs % 1) (map html/text (html/select url [:.abaproduct-price])))
-        image        (map #(get-in % [:attrs :src]) (html/select url [:.abaproduct-image :img]))
-        link         (map #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.abaproduct-title :a])))
-        availability (map #(string/trim (second (re-find #"Availability: ([a-zA-Z0-9 ]+)" %)))
+        title        (pmap html/text (html/select url [:.abaproduct-title :a]))
+        author       (pmap #(string/trim %) (map html/text (html/select url [:.abaproduct-authors])))
+        price        (pmap #(subs % 1) (map html/text (html/select url [:.abaproduct-price])))
+        image        (pmap #(get-in % [:attrs :src]) (html/select url [:.abaproduct-image :img]))
+        link         (pmap #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.abaproduct-title :a])))
+        availability (pmap #(string/trim (second (re-find #"Availability: ([a-zA-Z0-9 ]+)" %)))
                           (map html/text (html/select url [:.abaproduct-more-details])))]
     (map #(merge store {:title %1
                         :author %2
