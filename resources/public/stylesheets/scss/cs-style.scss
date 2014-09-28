@@ -187,6 +187,7 @@ ion-content {
     border-right: $cs-green-color .75em solid;
   }
   @include breakpoint(desktop) {
+    background-color: white !important;
     border-left: $cs-green-color .5em solid;
     border-right: $cs-green-color .5em solid;
   }
@@ -575,6 +576,10 @@ form .search-button:hover {
   height: 50px;
   border-top: none !important;
   border-left: none !important;
+
+  @include breakpoint(desktop) {
+    width: 50px;
+  }
 }
 
 .item-btn-bar {
@@ -651,6 +656,43 @@ form .search-button:hover {
   line-height: 50px !important;
   margin-right: 0;
   width: 86%;
+
+  @include breakpoint(desktop) {
+    margin-left: -9%;
+    width: 63%;
+  }
+}
+
+#search-again {
+  @include breakpoint(desktop) {
+    left: 5%;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 64em) {
+  #search-logo {
+    display: none;
+  }
+}
+
+.search-bar {
+  @include breakpoint(desktop) {
+    position: absolute;
+    width: 71%;
+  }
+}
+
+.search-results-header {
+  @include breakpoint(desktop) {
+    margin-left: 30%;
+  }
+}
+
+.search-results {
+  @include breakpoint(desktop) {
+    padding-left: 30.7%;
+  }
 }
 
 .book-img-wrapper {

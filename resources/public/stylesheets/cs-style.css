@@ -204,6 +204,7 @@ ion-content {
       border-right: #00fa9f 0.75em solid; } }
   @media (min-width: 70em) {
     .cs-main-container {
+      background-color: white !important;
       border-left: #00fa9f 0.5em solid;
       border-right: #00fa9f 0.5em solid; } }
 
@@ -530,6 +531,9 @@ form .search-button:hover {
   height: 50px;
   border-top: none !important;
   border-left: none !important; }
+  @media (min-width: 70em) {
+    .back-btn {
+      width: 50px; } }
 
 .item-btn-bar {
   background-color: #efefef;
@@ -590,6 +594,31 @@ form .search-button:hover {
   line-height: 50px !important;
   margin-right: 0;
   width: 86%; }
+  @media (min-width: 70em) {
+    #search-text {
+      margin-left: -9%;
+      width: 63%; } }
+
+@media (min-width: 70em) {
+  #search-again {
+    left: 5%;
+    width: 100%; } }
+
+@media only screen and (max-width: 64em) {
+  #search-logo {
+    display: none; } }
+@media (min-width: 70em) {
+  .search-bar {
+    position: absolute;
+    width: 71%; } }
+
+@media (min-width: 70em) {
+  .search-results-header {
+    margin-left: 30%; } }
+
+@media (min-width: 70em) {
+  .search-results {
+    padding-left: 30.7%; } }
 
 .book-img-wrapper {
   display: inline-block;

@@ -1,6 +1,12 @@
-<nav class='cs-bar-container'>
-  <form name='searchForm' data-ng-controller='MainCtrl'>
-    <input type='text' class='form-field swappable-bar' placeholder='Title, author or ISBN' data-ng-model='form.book' size='16' />
+<ion-header-bar>
+  <div class='cs-logo' id='search-logo'>
+    <img src='/img/cs_logo.svg' />
+  </div>
+</ion-header-bar>
+
+<nav class='cs-bar-container search-results-header'>
+  <form name='searchForm' data-ng-controller='MainCtrl' class='search-bar'>
+    <input type='text' id='search-again' class='form-field swappable-bar' placeholder='Title, author or ISBN' data-ng-model='form.book' size='16' />
     <button class='cs-search-btn swappable-btn-right' data-ng-click='search()'>
       <i class='icon ion-search i cs-icon'></i>
     </button>
@@ -18,7 +24,7 @@
 </nav>
 
 <ion-content>
-  <ul class='cs-main-container list nav-clear'>
+  <ul class='cs-main-container list nav-clear search-results'>
     <li class='item' data-ng-repeat="result in results | orderBy: [sortBy(result), 'availability']">
       <div>
         <div class='book-img-wrapper'>
