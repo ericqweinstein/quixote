@@ -547,6 +547,9 @@ form .search-button:hover {
 #search-by-btns {
   margin-top: 15%;
   clear: left; }
+  @media (min-width: 70em) {
+    #search-by-btns {
+      margin-top: 4%; } }
 
 #search-by-btns button {
   border-color: white;
