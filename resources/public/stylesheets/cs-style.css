@@ -356,6 +356,9 @@ ion-content {
 .type-small {
   font-size: 0.55rem !important; }
 
+.type-medium {
+  font-size: 0.75rem !important; }
+
 .type-base {
   font-size: 1rem !important;
   line-height: 1.2rem !important; }
