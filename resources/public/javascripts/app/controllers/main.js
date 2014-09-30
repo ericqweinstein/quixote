@@ -59,6 +59,12 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', 'Search', 'Geolocation'
     }
   };
 
+  // This is a SERIOUS hack and should be
+  // removed as soon as possible. (EW 30 Sep 2014)
+  function sleep(millis, cb) {
+    setTimeout(function() { cb(); }, millis);
+  }
+
   /**
    * Kick off requests to the API for book
    * availability data.
@@ -70,11 +76,16 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', 'Search', 'Geolocation'
     $scope.loading = true;
 
     if (Geolocation.fetch().length) {
-      $location.path('/search');
+      // See above comment re: hack. (EW 30 Sep 2014)
+      sleep(4000, function() {
+        $location.path('/search');
+      });
     } else {
       // Attempt geolocation
       $scope.setLocation();
     }
+
+    Search.flush();
 
     for (var i = 0; i < NUMBER_OF_STORES; i++) {
       Search.execute($scope.form.book, i);

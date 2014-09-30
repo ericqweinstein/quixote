@@ -42,6 +42,10 @@ CityShelf.factory('Search', ['Store', function(Store) {
     return searchResults;
   };
 
+  var flush = function() {
+    searchResults = [];
+  };
+
   /**
    * Retrieves the original query string.
    * @return {String} The original query.
@@ -54,6 +58,7 @@ CityShelf.factory('Search', ['Store', function(Store) {
   return {
     execute: execute
   , fetch: fetch
+  , flush: flush
   , getQuery: getQuery
   };
 }]);
