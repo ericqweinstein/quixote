@@ -27,7 +27,7 @@ CityShelf.factory('Search', ['Store', function(Store) {
    * @method
    */
   var execute = function(query, storeNumber) {
-    searchQuery   = query;
+    searchQuery = query;
     Store.query({ id: storeNumber, query: query }).$promise.then(function(results) {
       searchResults = searchResults.concat(results);
     });
