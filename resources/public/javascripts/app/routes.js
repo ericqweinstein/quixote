@@ -19,7 +19,7 @@ CityShelf.config(['$routeProvider', '$locationProvider', function($routeProvider
   , templateUrl: 'templates/geolocation.html'
   }).
   otherwise({
-    redirectTo: 'templates/404.html'
+    templateUrl: 'templates/404.html'
   });
 
   $locationProvider.html5Mode(true);
