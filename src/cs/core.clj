@@ -50,7 +50,7 @@
 
   ; API routes.
   (apply routes
-    (map #(GET (str "/api/stores/" (:id %) "/")
+    (pmap #(GET (str "/api/stores/" (:id %) "/")
                {params :query-params}
                (indie % (codec/url-encode (get params "query"))))
          store-data))
