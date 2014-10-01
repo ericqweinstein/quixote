@@ -42,6 +42,10 @@ CityShelf.factory('Search', ['Store', function(Store) {
     return searchResults;
   };
 
+  /**
+   * Flushes the previous search results.
+   * @method
+   */
   var flush = function() {
     searchResults = [];
   };
