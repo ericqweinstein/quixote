@@ -219,13 +219,22 @@ ion-content {
   transition: all 0.3s linear; }
   @media (max-width: 37.5em) {
     .cs-logo {
+      padding: 2%;
       width: 25%; } }
   @media (min-width: 37.5em) {
     .cs-logo {
-      width: 20%; } }
+      padding: 3.5%;
+      width: 16.5%; } }
   @media (min-width: 50em) {
     .cs-logo {
-      width: 15%; } }
+      padding: 2%;
+      width: 13%; } }
+  @media (min-width: 64em) {
+    .cs-logo {
+      border: 2px solid #00fa9f;
+      margin: 2.5% 0 0 2.5%;
+      padding: 2%;
+      width: 9%; } }
   @media (min-width: 70em) {
     .cs-logo {
       border: 2px solid #00fa9f;
@@ -253,6 +262,15 @@ ion-content {
   background-color: none !important;
   margin-left: 5%;
   width: 90%; }
+  @media (min-width: 37.5em) {
+    .cs-social-media {
+      margin-left: 24%; } }
+  @media (min-width: 50em) {
+    .cs-social-media {
+      margin-left: 24%; } }
+  @media (min-width: 64em) {
+    .cs-social-media {
+      margin-left: 20%; } }
   @media (min-width: 70em) {
     .cs-social-media {
       margin-left: 1%; } }
@@ -490,6 +508,18 @@ form .search-button:hover {
   border: none;
   width: 23%;
   z-index: 20; }
+  @media (min-width: 37.5em) {
+    .social-btn {
+      margin-top: 10%;
+      width: 100px; } }
+  @media (min-width: 50em) {
+    .social-btn {
+      margin-top: 10%;
+      width: 100px; } }
+  @media (min-width: 64em) {
+    .social-btn {
+      margin-top: 10%;
+      width: 100px; } }
   @media (min-width: 70em) {
     .social-btn {
       margin-top: 30%;

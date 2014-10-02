@@ -201,15 +201,29 @@ ion-content {
   z-index: $zIndex-2;
 
   @include transition(all, 0.3s, linear);
+
   @include breakpoint(mobileonly) {
+    padding: 2%;
     width: 25%;
   }
+
   @include breakpoint(phablet) {
-    width: 20%;
+    padding: 3.5%;
+    width: 16.5%;
   }
+
   @include breakpoint(tablet) {
-    width: 15%;
+    padding: 2%;
+    width: 13%;
   }
+
+  @include breakpoint(laptop) {
+    border: 2px solid $cs-green-color;
+    margin: 2.5% 0 0 2.5%;
+    padding: 2%;
+    width: 9%;
+  }
+
   @include breakpoint(desktop) {
     border: 2px solid $cs-green-color;
     margin: 3% 0 0 3%;
@@ -241,6 +255,18 @@ ion-content {
   background-color: none !important;
   margin-left: 5%;
   width: 90%;
+
+  @include breakpoint(phablet) {
+    margin-left: 24%;
+  }
+
+  @include breakpoint(tablet) {
+    margin-left: 24%;
+  }
+
+  @include breakpoint(laptop) {
+    margin-left: 20%;
+  }
 
   @include breakpoint(desktop) {
     margin-left: 1%;
@@ -529,6 +555,21 @@ form .search-button:hover {
   border: none;
   width: 23%;
   z-index: $zIndex-2;
+
+  @include breakpoint(phablet) {
+    margin-top: 10%;
+    width: 100px;
+  }
+
+  @include breakpoint(tablet) {
+    margin-top: 10%;
+    width: 100px;
+  }
+
+  @include breakpoint(laptop) {
+    margin-top: 10%;
+    width: 100px;
+  }
 
   @include breakpoint(desktop) {
     margin-top: 30%;
