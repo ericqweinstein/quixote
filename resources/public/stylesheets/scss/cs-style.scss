@@ -164,32 +164,31 @@ ion-content {
   }
 }
 
-// Containers
-.cs-main-container{
+// Test
+.scroll-content {
   border-left: $cs-green-color 1em solid;
   border-right: $cs-green-color 1em solid;
+  height: 110%;
+  @media (max-width: 37.5em) {
+    border-left: #00fa9f 0.25em solid;
+    border-right: #00fa9f 0.25em solid;
+  }
+  @media (min-width: 50em) {
+    border-left: #00fa9f 0.5em solid;
+    border-right: #00fa9f 0.5em solid;
+  }
+  @media (min-width: 64em) {
+    border-left: #00fa9f 0.75em solid;
+    border-right: #00fa9f 0.75em solid;
+  }
+}
+
+// Containers
+.cs-main-container{
   margin-top: 0 !important;
   width: 100%;
-  @include breakpoint(mobileonly) {
-    border-left: $cs-green-color .25em solid;
-    border-right: $cs-green-color .25em solid;
-  }
-  @include breakpoint(phablet) {
-    border-left: $cs-green-color .5em solid;
-    border-right: $cs-green-color .5em solid;
-  }
-  @include breakpoint(tablet) {
-    border-left: $cs-green-color .5em solid;
-    border-right: $cs-green-color .5em solid;
-  }
-  @include breakpoint(laptop) {
-    border-left: $cs-green-color .75em solid;
-    border-right: $cs-green-color .75em solid;
-  }
   @include breakpoint(desktop) {
     background-color: white !important;
-    border-left: $cs-green-color .5em solid;
-    border-right: $cs-green-color .5em solid;
   }
 }
 
