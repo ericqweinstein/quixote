@@ -603,7 +603,8 @@ form .search-button:hover {
   clear: left; }
   @media (min-width: 70em) {
     #search-by-btns {
-      margin-top: 4%; } }
+      margin-top: 4%;
+      width: 70%; } }
 
 #search-by-btns button {
   border-color: white;
