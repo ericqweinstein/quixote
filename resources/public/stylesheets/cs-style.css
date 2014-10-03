@@ -672,3 +672,13 @@ form .search-button:hover {
 
 .angular-google-map-container {
   height: 8em; }
+
+@media (min-width: 70em) {
+  #logo-geo {
+    margin: 1% 0 0 2%;
+    padding: 1.5%;
+    width: 8%; } }
+
+@media (min-width: 70em) {
+  #geolocation {
+    margin-left: 1.5%; } }

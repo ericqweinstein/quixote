@@ -768,3 +768,18 @@ form .search-button:hover {
 .angular-google-map-container {
   height: 8em;
 }
+
+// Geolocation
+#logo-geo {
+  @include breakpoint(desktop) {
+    margin: 1% 0 0 2%;
+    padding: 1.5%;
+    width: 8%;
+  }
+}
+
+#geolocation {
+  @include breakpoint(desktop) {
+    margin-left: 1.5%;
+  }
+}

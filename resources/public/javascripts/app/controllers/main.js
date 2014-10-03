@@ -17,7 +17,7 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', 'Search', 'Geolocation'
    * Set timeout for geolocation request (in ms).
    * @type {Number}
    */
-  var TIMEOUT = 500;
+  var TIMEOUT = 3000;
 
   /**
    * Form data we'll use when searching for a book.
@@ -52,7 +52,7 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', 'Search', 'Geolocation'
                       , position.coords.longitude);
 
         $location.path('/search');
-      }, handleError, TIMEOUT);
+      }, handleError, { timeout: TIMEOUT });
     } else {
       // Geolocation is not available.
       $location.path('/geolocation');
