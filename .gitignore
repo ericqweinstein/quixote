@@ -2,6 +2,9 @@
 todo.md
 .sass-cache/
 
+# Mac stuff
+.DS_Store
+
 # Docs
 js_doc/
 doc/
