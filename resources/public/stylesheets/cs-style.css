@@ -504,7 +504,7 @@ form .search-button:hover {
   background-color: white;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 65%;
+  background-size: 50%;
   border: none;
   width: 23%;
   z-index: 20; }
