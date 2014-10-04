@@ -523,7 +523,9 @@ form .search-button:hover {
   @media (min-width: 70em) {
     .social-btn {
       margin-top: 30%;
-      width: 60px; } }
+      width: 60px; }
+      .social-btn:hover {
+        background-color: #00fa9f; } }
 
 @media only screen and (max-width: 64em) {
   .social-btns-search {

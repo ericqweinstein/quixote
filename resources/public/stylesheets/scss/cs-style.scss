@@ -574,6 +574,9 @@ form .search-button:hover {
   @include breakpoint(desktop) {
     margin-top: 30%;
     width: 60px;
+    &:hover {
+      background-color: $cs-green-color;
+    }
   }
 }
 
