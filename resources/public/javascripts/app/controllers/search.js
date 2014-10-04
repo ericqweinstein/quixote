@@ -76,7 +76,7 @@ CityShelf.controller('SearchCtrl', ['$scope', '$http', 'Search', 'Geolocation', 
    * Determines whether we show the map.
    * @type {Boolean}
    */
-  $scope.showMap = true;
+  $scope.showMap = false;
 
   /**
    * The original query string.
