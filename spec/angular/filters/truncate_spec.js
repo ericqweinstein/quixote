@@ -14,6 +14,6 @@ describe('Truncate', function() {
   }));
 
   it('truncates long text', inject(function(truncateFilter) {
-    expect(truncateFilter('These are the voyages of the USS Enterprise')).toEqual('These are the voyages ...');
+    expect(truncateFilter('These are the voyages of the USS Enterprise')).toEqual('These are the voyages of the USS...');
   }));
 });

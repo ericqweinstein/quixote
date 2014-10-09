@@ -15,21 +15,21 @@ module.exports = function(grunt) {
       }
     , files: [
         'Gruntfile.js'
-      , 'resources/public/javascripts/**/*.js'
-      , '!resources/public/javascripts/vendor/**/*.js'
+      , 'resources/javascripts/**/*.js'
+      , '!resources/javascripts/vendor/**/*.js'
       ]
     }
   , jasmine: {
-      src: ['resources/public/javascripts/app/app.js'
-          , 'resources/public/javascripts/app/routes.js'
-          , 'resources/public/javascripts/app/filters/capitalize.js'
-          , 'resources/public/javascripts/app/filters/truncate.js'
-          , 'resources/public/javascripts/app/services/store.js'
-          , 'resources/public/javascripts/app/services/search.js'
-          , 'resources/public/javascripts/app/services/geolocation.js'
-          , 'resources/public/javascripts/app/controllers/main.js'
-          , 'resources/public/javascripts/app/controllers/search.js'
-          , 'resources/public/javascripts/app/controllers/geolocation.js']
+      src: ['resources/javascripts/app/app.js'
+          , 'resources/javascripts/app/routes.js'
+          , 'resources/javascripts/app/filters/capitalize.js'
+          , 'resources/javascripts/app/filters/truncate.js'
+          , 'resources/javascripts/app/services/store.js'
+          , 'resources/javascripts/app/services/search.js'
+          , 'resources/javascripts/app/services/geolocation.js'
+          , 'resources/javascripts/app/controllers/main.js'
+          , 'resources/javascripts/app/controllers/search.js'
+          , 'resources/javascripts/app/controllers/geolocation.js']
     , options: {
         specs: 'spec/angular/**/*.js'
       , summary: true
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
     }
   , jsdoc: {
       dist: {
-        src: ['resources/public/javascripts/app/**/*.js']
+        src: ['resources/javascripts/app/**/*.js']
       , options: {
           destination: 'js_doc'
         }
@@ -61,7 +61,33 @@ module.exports = function(grunt) {
   , sass: {
       dist: {
         files: {
-          'resources/public/stylesheets/cs-style.css': 'resources/public/stylesheets/scss/cs-style.scss'
+          'resources/stylesheets/cs-style.css': 'resources/stylesheets/scss/cs-style.scss'
+        }
+      }
+    }
+  , concat: {
+      css: {
+        src: ['resources/stylesheets/*.css']
+      , dest: 'resources/stylesheets/cityshelf.css'
+      }
+    , js: {
+        src: ['resources/javascripts/app/**/*.js']
+      , dest: 'resources/javascripts/cityshelf.js'
+      }
+    }
+  , cssmin: {
+      css: {
+        src: 'resources/stylesheets/cityshelf.css'
+      , dest: 'resources/public/stylesheets/cityshelf.min.css'
+      }
+    }
+  , uglify: {
+      options: {
+        mangle: true
+      }
+    , js: {
+        files: {
+          'resources/public/javascripts/cityshelf.min.js': ['resources/javascripts/cityshelf.js']
         }
       }
     }
@@ -72,7 +98,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-protractor-runner');
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // Lint, test, build documentation, and compile SCSS to CSS with `grunt`.
-  grunt.registerTask('default', ['jshint', 'jasmine', 'jsdoc', 'sass']);
+  grunt.registerTask('default', ['jshint', 'jasmine', 'jsdoc', 'sass', 'concat', 'cssmin', 'uglify']);
 };

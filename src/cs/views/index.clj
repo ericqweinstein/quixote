@@ -12,7 +12,7 @@
           [:title title]
           (include-css "stylesheets/vendor/ionic/ionic.css")
           (include-css "stylesheets/vendor/ionic/ionicons.css")
-          (include-css "stylesheets/cs-style.css")
+          (include-css "stylesheets/cityshelf.min.css")
           [:meta {:charset "UTF-8"}]
           [:meta {:name "description" :content "CityShelf: Go Local for Books"}]
           [:meta {:name "keywords" :content "CityShelf, indie, bookstore, local, books"}]
@@ -28,13 +28,4 @@
           (include-js "javascripts/vendor/angular/angular-route.min.js")
           (include-js "javascripts/vendor/lodash.underscore.min.js")
           (include-js "javascripts/vendor/angular/angular-google-maps.min.js")
-          (include-js "javascripts/app/app.js")
-          (include-js "javascripts/app/routes.js")
-          (include-js "javascripts/app/filters/capitalize.js")
-          (include-js "javascripts/app/filters/truncate.js")
-          (include-js "javascripts/app/services/store.js")
-          (include-js "javascripts/app/services/geolocation.js")
-          (include-js "javascripts/app/services/search.js")
-          (include-js "javascripts/app/controllers/main.js")
-          (include-js "javascripts/app/controllers/search.js")
-          (include-js "javascripts/app/controllers/geolocation.js")]))
+          (include-js "javascripts/cityshelf.min.js")]))
