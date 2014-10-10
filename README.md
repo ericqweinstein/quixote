@@ -24,7 +24,7 @@ CityShelf is an Angular SPA with a Clojure API (generated via [Enlive](https://g
 ## Deploying
 CityShelf currently lives on Heroku at http://cityshelf.herokuapp.com/.
 
-1. Lint/test the client application (`grunt`)
+1. Lint/test the client application, build/minify CSS & JS, &c (`grunt`)
 2. Test the API (`lein midje`)
 3. Deploy (`git push heroku master`)
 
