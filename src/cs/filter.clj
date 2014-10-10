@@ -14,7 +14,7 @@
   [text]
   (cond
     (re-find #"(?ix) not" text) "Unavailable"
-    (re-find #"(?ix) warehouse|distributor|special|usually|currently" text) "Order by phone"
+    (re-find #"(?ix) warehouse|distributor|special|usually|currently" text) "Not in store"
     (re-find #"(?ix) in\s+stock|available|table|section|shelves" text) "On shelves now!"
     :else "Unavailable"))
 
