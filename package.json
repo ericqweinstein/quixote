@@ -5,19 +5,19 @@
 , "private": true
 , "repository": {
     "type": "git"
-,   "url": "https://github.com/ericqweinstein/cityshelf"
-  },
-  "dependencies": {
+  , "url": "https://github.com/ericqweinstein/cityshelf"
+  }
+, "dependencies": {
     "grunt": "0.4.4"
-,   "grunt-contrib-concat": "0.5.x"
-,   "grunt-contrib-cssmin": "0.10.x"
-,   "grunt-contrib-jshint": "0.9.x"
-,   "grunt-contrib-jasmine": "0.7.x"
-,   "grunt-contrib-uglify": "0.6.x"
-,   "grunt-protractor-runner": "1.1.x"
-,   "grunt-contrib-sass": "0.8.x"
-,   "grunt-jsdoc": "0.5.x"
-,   "jshint": "2.4.x"
+  , "grunt-contrib-concat": "0.5.x"
+  , "grunt-contrib-cssmin": "0.10.x"
+  , "grunt-contrib-jshint": "0.9.x"
+  , "grunt-contrib-jasmine": "0.7.x"
+  , "grunt-contrib-uglify": "0.6.x"
+  , "grunt-protractor-runner": "1.1.x"
+  , "grunt-contrib-sass": "0.8.x"
+  , "grunt-jsdoc": "0.5.x"
+  , "jshint": "2.4.x"
   }
 , "engines": {
     "node": "0.10.26"
