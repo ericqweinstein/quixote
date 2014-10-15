@@ -10,6 +10,7 @@
 // Variables
 $cs-darkgray-color: rgb(29, 30, 30);      /* #1d1e1e */
 $cs-green-color: rgb(0, 250, 159);        /* #00fa9f */
+$cs-dark-green-color: rgb(0, 230, 159);   /* #00e69f */
 $cs-lightgray-color: rgb(239, 239, 239);  /* #efefef */
 $cs-mediumgray-color: rgb(206, 206, 206); /* #cecece */
 $cs-blue-color: rgb(0, 0, 255);           /* #0000ff */
@@ -665,9 +666,18 @@ form .search-button:hover {
 }
 
 #about-us {
-  display: none;
+  display: block;
+
+  @include breakpoint(mobileonly) {
+    margin-left: 1.5em !important;
+  }
+
+  @include breakpoint(tablet) {
+    margin-left: 2.5em !important;
+  }
+
   @include breakpoint(desktop) {
-    display: block;
+    margin-left: 0 !important;
     width: 80%;
   }
 }
@@ -690,7 +700,7 @@ form .search-button:hover {
 }
 
 .selected {
-  color: $cs-green-color !important;
+  color: $cs-dark-green-color !important;
   border-bottom: 2px $cs-green-color solid !important;
 }
 

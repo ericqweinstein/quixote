@@ -104,6 +104,7 @@
 
 /* #1d1e1e */
 /* #00fa9f */
+/* #00e69f */
 /* #efefef */
 /* #cecece */
 /* #0000ff */
@@ -594,10 +595,16 @@ form .search-button:hover {
   width: 86%; }
 
 #about-us {
-  display: none; }
+  display: block; }
+  @media (max-width: 37.5em) {
+    #about-us {
+      margin-left: 1.5em !important; } }
+  @media (min-width: 50em) {
+    #about-us {
+      margin-left: 2.5em !important; } }
   @media (min-width: 70em) {
     #about-us {
-      display: block;
+      margin-left: 0 !important;
       width: 80%; } }
 
 #search-by-btns {
@@ -615,7 +622,7 @@ form .search-button:hover {
   border-bottom: 2px #cecece solid; }
 
 .selected {
-  color: #00fa9f !important;
+  color: #00e69f !important;
   border-bottom: 2px #00fa9f solid !important; }
 
 @media (min-width: 70em) {
