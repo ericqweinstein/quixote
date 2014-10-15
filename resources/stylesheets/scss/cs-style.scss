@@ -397,6 +397,10 @@ ion-content {
 
 // Sizes
 .type-small {
+  font-size: 0.55rem !important;
+}
+
+.type-medium {
   font-size: 0.75rem !important;
 }
 
@@ -702,7 +706,7 @@ form .search-button:hover {
   float: right;
   line-height: 50px !important;
   margin-right: 0;
-  width: 86%;
+  width: 88%;
 
   @include breakpoint(desktop) {
     margin-left: -9%;

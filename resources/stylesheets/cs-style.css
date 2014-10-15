@@ -370,6 +370,9 @@ ion-content {
   webkit-font-smoothing: antialiased; }
 
 .type-small {
+  font-size: 0.55rem !important; }
+
+.type-medium {
   font-size: 0.75rem !important; }
 
 .type-base {
@@ -624,7 +627,7 @@ form .search-button:hover {
   float: right;
   line-height: 50px !important;
   margin-right: 0;
-  width: 86%; }
+  width: 88%; }
   @media (min-width: 70em) {
     #search-text {
       margin-left: -9%;
