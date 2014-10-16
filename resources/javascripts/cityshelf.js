@@ -47,7 +47,7 @@ CityShelf.controller('GeolocationCtrl', ['$scope', '$location', 'Geolocation', f
  * @author Eric Weinstein <eric.q.weinstein@gmail.com>
  */
 
-CityShelf.controller('MainCtrl', ['$scope', '$location', 'Search', 'Geolocation', function StoresCtrl($scope, $location, Search, Geolocation) {
+CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Geolocation', function StoresCtrl($scope, $location, $route, Search, Geolocation) {
   'use strict';
 
   /**
@@ -123,6 +123,7 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', 'Search', 'Geolocation'
       // See above comment re: hack. (EW 30 Sep 2014)
       sleep(1000, function() {
         $location.path('/search');
+        $route.reload();
       });
     } else {
       // Attempt geolocation

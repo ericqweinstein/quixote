@@ -24,7 +24,7 @@
 , "latedef": true
 , "laxcomma": true
 , "maxdepth": 4
-, "maxparams": 4
+, "maxparams": 5
 , "multistr": true
 , "newcap": true
 , "noarg": true
