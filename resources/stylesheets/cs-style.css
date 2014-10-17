@@ -591,6 +591,8 @@ form .search-button:hover {
     border-left: none;
     border-bottom: none;
     color: blue; }
+  .item-btn-bar .drop-button {
+    padding-top: 1%; }
 
 .full-width {
   width: 86%; }
