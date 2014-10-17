@@ -168,15 +168,16 @@ ion-content {
   margin-bottom: 0 !important; }
 
 .item {
-  width: 99%;
+  background-color: #fafafa;
+  border-bottom: #cecece 2px solid;
   border-left: none;
   border-right: none;
   border-top: none;
-  border-bottom: #cecece 2px solid;
   margin-bottom: 3rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 1rem 0 0 0 !important; }
+  padding: 1rem 0 0 0 !important;
+  width: 99%; }
   @media (min-width: 70em) {
     .item {
       display: inline-block;

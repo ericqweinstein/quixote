@@ -149,15 +149,16 @@ ion-content {
 }
 
 .item {
-  width: 99%;
+  background-color: #fafafa;
+  border-bottom: $cs-mediumgray-color 2px solid;
   border-left: none;
   border-right: none;
   border-top: none;
-  border-bottom: $cs-mediumgray-color 2px solid;
   margin-bottom: 3rem;
   margin-left: auto;
   margin-right: auto;
   padding: 1rem 0 0 0 !important;
+  width: 99%;
 
   @include breakpoint(desktop) {
     display: inline-block;
