@@ -32,7 +32,7 @@
 
 <ion-content>
   <ul class='cs-main-container list nav-clear search-results'>
-    <li class='item' data-ng-repeat="result in results | orderBy : ['availability', sortBy(result)] : true">
+    <li class='item' data-ng-repeat="result in results | orderBy : [sortBy(result), 'availability']">
       <div>
         <div class='book-img-wrapper'>
           <a href='{{ result.bookLink }}' target='_blank'><img ng-src='{{ result.img }}' /></a>
