@@ -51,7 +51,7 @@
           {{ showMap? 'HIDE' : 'SHOW' }} MAP
         </button>
       </div>
-      <google-map center='result.map.center' zoom='result.map.zoom' data-ng-show='showMap'>
+      <google-map center='result.map.center' zoom='result.map.zoom' data-ng-if='showMap'>
         <marker coords='result.map.center' idKey='1'></marker>
       </google-map>
     </li>
