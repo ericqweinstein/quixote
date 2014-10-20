@@ -8,7 +8,7 @@ CityShelf.filter('truncate', function() {
 
   return function(text, length, end) {
     if (isNaN(length)) {
-      length = 35;
+      length = 30;
     }
 
     if (end === undefined) {
