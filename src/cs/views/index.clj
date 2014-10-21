@@ -13,6 +13,11 @@
           (include-css "stylesheets/vendor/ionic/ionic.css")
           (include-css "stylesheets/vendor/ionic/ionicons.css")
           (include-css "stylesheets/cityshelf.min.css")
+          [:link {:rel "apple-touch-icon" :href "apple-touch-icon.png/apple-touch-icon.png"}]
+          [:link {:rel "apple-touch-icon" :sizes "57x57" :href "apple-touch-icon.png/apple-touch-icon-57x57-precomposed.png"}]
+          [:link {:rel "apple-touch-icon" :sizes "72x72" :href "apple-touch-icon.png/apple-touch-icon-72x72-precomposed.png"}]
+          [:link {:rel "apple-touch-icon" :sizes "114x114" :href "apple-touch-icon.png/apple-touch-icon-114x114-precomposed.png"}]
+          [:link {:rel "apple-touch-icon" :sizes "144x144" :href "apple-touch-icon.png/apple-touch-icon-144x144-precomposed.png"}]
           [:meta {:charset "UTF-8"}]
           [:meta {:name "description" :content "CityShelf: Go Local for Books"}]
           [:meta {:name "keywords" :content "CityShelf, indie, bookstore, local, books"}]
