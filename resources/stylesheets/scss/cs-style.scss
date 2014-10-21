@@ -62,40 +62,45 @@ $zIndex-6: 100;
 // Breakpoints
 @mixin breakpoint($point) {
   @if $point == desktop {
-    @media (min-width: 70em) { @content ; }
+    @media (min-width: 70em) { @content; }
   }
   @else if $point == laptop {
-    @media (min-width: 64em) { @content ; }
+    @media (min-width: 64em) { @content; }
   }
   @else if $point == tablet {
-    @media (min-width: 50em) { @content ; }
+    @media (min-width: 50em) { @content; }
   }
   @else if $point == phablet {
-    @media (min-width: 37.5em)  { @content ; }
+    @media (min-width: 37.5em)  { @content; }
   }
   @else if $point == mobileonly {
-    @media (max-width: 37.5em)  { @content ; }
+    @media (max-width: 37.5em)  { @content; }
   }
 }
 
 // Main app
 body {
+  border-top: $cs-green-color 1em solid;
+  font-stretch: normal;
   font-style: normal;
   font-weight: normal;
-  font-stretch: normal;
-  border-top: $cs-green-color 1em solid;
+
   @include breakpoint(mobileonly) {
     border-top: $cs-green-color .25em solid;
   }
+
   @include breakpoint(phablet) {
     border-top: $cs-green-color .5em solid;
   }
+
   @include breakpoint(tablet) {
     border-top: $cs-green-color .5em solid;
   }
+
   @include breakpoint(laptop) {
     border-top: $cs-green-color 0.75em solid;
   }
+
   @include breakpoint(desktop) {
     border-top: $cs-green-color 0.5em solid;
   }
@@ -103,10 +108,10 @@ body {
 
 // Ionic overrides
 .bar {
-  height: inherit !important;
-  border: none !important;
   background-color: rgba(255, 255, 255, 0) !important;
   background-size: 0% 0px !important;
+  border: none !important;
+  height: inherit !important;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -171,14 +176,17 @@ ion-content {
   border-left: $cs-green-color 1em solid;
   border-right: $cs-green-color 1em solid;
   height: 110%;
+
   @media (max-width: 37.5em) {
     border-left: #00fa9f 0.25em solid;
     border-right: #00fa9f 0.25em solid;
   }
+
   @media (min-width: 50em) {
     border-left: #00fa9f 0.5em solid;
     border-right: #00fa9f 0.5em solid;
   }
+
   @media (min-width: 64em) {
     border-left: #00fa9f 0.75em solid;
     border-right: #00fa9f 0.75em solid;
@@ -186,20 +194,22 @@ ion-content {
 }
 
 // Containers
-.cs-main-container{
+.cs-main-container {
   margin-top: 0 !important;
   width: 100%;
+
   @include breakpoint(desktop) {
     background-color: white !important;
+    margin-left: 0;
   }
 }
 
 .cs-logo {
-  width: 25%;
-  padding-left: $cs-margin-left;
-  padding-top: 6%;
   padding-bottom: 0.5em;
+  padding-left: $cs-margin-left;
   padding-right: 0.5em;
+  padding-top: 6%;
+  width: 25%;
   z-index: $zIndex-2;
 
   @include transition(all, 0.3s, linear);
@@ -246,10 +256,10 @@ ion-content {
 
 .cs-footer {
   background-color: $cs-green-color !important;
-  color: $cs-darkgray-color !important;
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
   border: none !important;
+  color: $cs-darkgray-color !important;
+  padding-bottom: 0.5rem !important;
+  padding-top: 0.5rem !important;
   position: fixed;
 }
 
@@ -277,10 +287,10 @@ ion-content {
 
 .cs-bar-container {
   background-color: rgba(255, 255, 255, 0.9);
-  width: 98%;
+  left: 1%;
   position: fixed;
   top: 0;
-  left: 1%;
+  width: 98%;
   z-index: $zIndex-6;
 }
 
@@ -289,24 +299,24 @@ ion-content {
 }
 
 .result-title {
-  width: 100%;
   float: left;
+  width: 100%;
 }
 
 .result-author {
-  width: 70%;
   float: left;
+  width: 70%;
 }
 
 .result-price {
-  width: 25%;
-  float: right;
   clear: left;
+  float: right;
+  width: 25%;
 }
 
 .result-store {
-  width: 100%;
   float: left;
+  width: 100%;
 }
 
 .result-author .result-store {
@@ -339,16 +349,21 @@ ion-content {
 
 .logo-clear {
   padding-top: 9rem;
+
   @include breakpoint(mobileonly) {
     padding-top: 9rem;
   }
+
   @include breakpoint(phablet) {
     padding-top: 9rem;
   }
+
   @include breakpoint(tablet) {
   }
+
   @include breakpoint(laptop) {
   }
+
   @include breakpoint(desktop) {
   }
 }
@@ -358,8 +373,8 @@ ion-content {
 }
 
 .bottom-clear {
-  padding-bottom: 6rem;
   margin-bottom: 0;
+  padding-bottom: 6rem;
 }
 
 /* Type Styles */
@@ -367,33 +382,33 @@ ion-content {
 // Weights
 .wf-standard {
   font-family: 'CooperHewitt-Light', helvetica, arial;
+  font-stretch: normal;
   font-style: normal;
   font-weight: normal;
-  font-stretch: normal;
   webkit-font-smoothing: antialiased;
 }
 
 .wf-standard-italic {
   font-family: 'CooperHewitt-LightItalic', helvetica, arial;
+  font-stretch: normal;
   font-style: normal;
   font-weight: normal;
-  font-stretch: normal;
   webkit-font-smoothing: antialiased;
 }
 
 .wf-standard-heavy {
   font-family: 'CooperHewitt-Book', helvetica, arial !important;
+  font-stretch: normal;
   font-style: normal;
   font-weight: normal;
-  font-stretch: normal;
   webkit-font-smoothing: antialiased;
 }
 
 .wf-bold {
   font-family: 'CooperHewitt-Bold', helvetica, arial;
+  font-stretch: normal;
   font-style: normal;
   font-weight: normal;
-  font-stretch: normal;
   webkit-font-smoothing: antialiased;
 }
 
@@ -439,33 +454,33 @@ i.large-spinner.ion-loading-c {
 
 // Form
 .form-field {
-  -webkit-appearance: none;
-  border-radius: 0px;
-  font-family: 'CooperHewitt-BookItalic', Helvetica, Arial, sans-serif;
   -moz-box-sizing: border-box;
+  -webkit-appearance: none;
   -webkit-box-sizing: border-box;
+  background: $cs-lightgray-color;
+  border-bottom: 3px solid $cs-green-color !important;
+  border-radius: 0px;
+  border: 1px solid transparent;
   box-sizing: border-box;
-  width: 88%;
+  color: black;
+  float: left;
+  font-family: 'CooperHewitt-BookItalic', Helvetica, Arial, sans-serif;
   font-size: 1em;
   height: 50px !important;
   line-height: 75px;
-  padding-left: $cs-margin-left !important;
-  border: 1px solid transparent;
-  border-bottom: 3px solid $cs-green-color !important;
-  background: $cs-lightgray-color;
-  margin-top: 0 !important;
-  color: black;
-  float: left;
   margin-left: 0 !important;
+  margin-top: 0 !important;
+  padding-left: $cs-margin-left !important;
+  width: 88%;
 
   @include transition (all, 0.3s, linear);
 
   @include breakpoint(mobileonly) {
     font-size: 0.875em;
     height: 50px;
+    line-height: 1.35em;
     padding-left: 20px;
     vertical-align: center;
-    line-height: 1.35em;
   }
 
   @include breakpoint(phablet) {
@@ -479,8 +494,8 @@ i.large-spinner.ion-loading-c {
 }
 
 form input:focus {
-  @include box-shadow(0px 0px 25px 0px rgba(0, 0, 0, 0.08));
   outline: none;
+  @include box-shadow(0px 0px 25px 0px rgba(0, 0, 0, 0.08));
 }
 
 form input::-webkit-input-placeholder {
@@ -606,28 +621,28 @@ form .search-button:hover {
 
 .cs-on-btn {
   background-color: $cs-green-color !important;
-  color: $cs-blue-color;
   border-radius: 0 !important;
   border: none !important;
+  color: $cs-blue-color;
   text-align: left;
 }
 
 .cs-ui-btn {
   background-color: $cs-green-color !important;
-  color: $cs-blue-color;
+  border-bottom: none !important;
   border-radius: 0 !important;
   border-right: 1px white solid !important;
-  border-bottom: none !important;
-  text-align: left;
+  color: $cs-blue-color;
   padding-top: 3px !important;
+  text-align: left;
 }
 
 .back-btn {
-  width: 14%;
-  line-height: 50px;
-  height: 50px;
-  border-top: none !important;
   border-left: none !important;
+  border-top: none !important;
+  height: 50px;
+  line-height: 50px;
+  width: 14%;
 
   @include breakpoint(desktop) {
     width: 50px;
@@ -637,22 +652,22 @@ form .search-button:hover {
 .item-btn-bar {
   background-color: $cs-lightgray-color;
   border-bottom: 2px $cs-mediumgray-color solid;
-  width: 100% !important;
   height: 50px;
   line-height: 50px;
+  width: 100% !important;
 
-  .no-button{
-    border-top: 2px $cs-lightgray-color solid;
-    border-right: none;
-    border-left: 2px $cs-lightgray-color solid;
-    border-bottom: none;
-    color: $cs-darkgray-color;
+  .no-button {
     background-color: white;
+    border-bottom: none;
+    border-left: 2px $cs-lightgray-color solid;
+    border-right: none;
+    border-top: 2px $cs-lightgray-color solid;
+    color: $cs-darkgray-color;
     cursor: auto !important;
     text-transform: uppercase;
   }
 
-  .button{
+  .button {
     border-top: none;
     border-right: 2px white solid;
     border-left: none;
@@ -698,15 +713,15 @@ form .search-button:hover {
 }
 
 #search-by-btns button {
-  border-color: white;
-  text-align: left;
   background-color: white;
   border-bottom: 2px $cs-mediumgray-color solid;
+  border-color: white;
+  text-align: left;
 }
 
 .selected {
-  color: $cs-dark-green-color !important;
   border-bottom: 2px $cs-green-color solid !important;
+  color: $cs-dark-green-color !important;
 }
 
 #tagline {
@@ -763,18 +778,18 @@ form .search-button:hover {
 
 .book-img-wrapper {
   display: inline-block;
+  float: left;
   height: 100px;
-  width: 72px;
   margin-bottom: 1.5rem;
   margin-right: 1rem;
-  float: left;
+  width: 72px;
 }
 
 .book-img-wrapper img {
+  border-bottom: 1px $cs-lightgray-color solid;
+  border-right: 1px $cs-lightgray-color solid;
   height: auto;
   width: 100%;
-  border-right: 1px $cs-lightgray-color solid;
-  border-bottom: 1px $cs-lightgray-color solid;
 }
 
 .book-copy-wrapper {
@@ -797,6 +812,16 @@ form .search-button:hover {
 }
 
 #geolocation {
+  background-color: $cs-green-color !important;
+  margin: 0;
+  color: white;
+
+  p {
+    font-weight: bold;
+  }
+}
+
+#geolocation-form {
   @include breakpoint(desktop) {
     margin-left: 1.5%;
   }
