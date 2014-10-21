@@ -692,12 +692,15 @@ form .search-button:hover {
     padding: 1.5%;
     width: 8%; } }
 
-#geolocation {
+#geolocation-inner {
   background-color: #00fa9f !important;
   margin: 0;
   color: white; }
-  #geolocation p {
+  #geolocation-inner p {
     font-weight: bold; }
+
+#geolocation-outer {
+  background-color: #00fa9f !important; }
 
 @media (min-width: 70em) {
   #geolocation-form {

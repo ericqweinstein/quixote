@@ -811,7 +811,7 @@ form .search-button:hover {
   }
 }
 
-#geolocation {
+#geolocation-inner {
   background-color: $cs-green-color !important;
   margin: 0;
   color: white;
@@ -819,6 +819,10 @@ form .search-button:hover {
   p {
     font-weight: bold;
   }
+}
+
+#geolocation-outer {
+  background-color: $cs-green-color !important;
 }
 
 #geolocation-form {
