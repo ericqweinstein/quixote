@@ -15,7 +15,9 @@ describe('MainCtrl', function() {
     });
   }));
 
-  it('has an example spec', function() {
-    expect(true).toBe(true);
+  describe('loading spinner', function() {
+    it('is not shown by default', function() {
+      expect(scope.loading).toBe(false);
+    });
   });
 });
