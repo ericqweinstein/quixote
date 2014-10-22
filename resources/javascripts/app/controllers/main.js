@@ -77,13 +77,15 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
 
     if (Geolocation.fetch().length) {
       // See above comment re: hack. (EW 30 Sep 2014)
-      sleep(4000, function() {
+      sleep(3000, function() {
         $location.path('/search');
         $route.reload();
       });
     } else {
       // Attempt geolocation
-      $scope.setLocation();
+      sleep(3000, function() {
+        $scope.setLocation();
+      });
     }
 
     Search.flush();
