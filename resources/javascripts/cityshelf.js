@@ -121,7 +121,7 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
 
     if (Geolocation.fetch().length) {
       // See above comment re: hack. (EW 30 Sep 2014)
-      sleep(1000, function() {
+      sleep(4000, function() {
         $location.path('/search');
         $route.reload();
       });
