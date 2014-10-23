@@ -5,10 +5,7 @@
   (:require [clojure.string :as string]
             [net.cgrand.enlive-html :as html]))
 
-(defn fetch-url
-  "Creates an Enlive HTML resource from the provided URL string."
-  [url]
-  (html/html-resource (java.net.URL. url)))
+(declare fetch-url)
 
 (defn search
   "Generates a JSON payload from sites powered by Solr /search/site."
@@ -29,3 +26,8 @@
                         :bookLink %5
                         :availability %6
                         }) title author price image link availability)))
+
+(defn- fetch-url
+  "Creates an Enlive HTML resource from the provided URL string."
+  [url]
+  (html/html-resource (java.net.URL. url)))
