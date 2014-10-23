@@ -11,6 +11,7 @@
             [compojure.route :as route]
             [compojure.handler]
             [cs.solr :as solr]
+            [cs.site :as site]
             [cs.strand :as strand]
             [cs.filter :refer [update remove-unavailable]]
             [cs.views.index :as home]))
@@ -29,10 +30,13 @@
   "Generates a JSON payload from the scraped URL."
   [store query]
 
-  ; The Strand is a special snowflake; the rest of our bookstores
-  ; all use the same ABA-based Apache Solr search solution. (EW 5 Sep 2014)
-  (if (re-find #"strandbooks" (:storeLink store))
+  ; @todo Refactor into a multimethod once working. (EW 21 Oct 2014)
+  (cond
+    (re-find #"strandbooks" (:storeLink store))
     (remove-unavailable (update (strand/search store query)))
+    (re-find #"(culture|greenlight|word)" (:storeLink store))
+    (remove-unavailable (update (site/search store query)))
+    :else
     (remove-unavailable (update (solr/search store query)))))
 
 (defresource indie [store query]
