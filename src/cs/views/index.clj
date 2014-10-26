@@ -22,7 +22,7 @@
           [:meta {:name "description" :content "CityShelf: Go Local for Books"}]
           [:meta {:name "keywords" :content "CityShelf, indie, bookstore, local, books"}]
           [:meta {:name "viewport"
-                  :content "user-scalable=no, width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimal-ui"}]
+                  :content "user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimal-ui"}]
           [:meta {:name "fragment" :content "!"}]
           [:meta {:property "og:image" :content "img/cs_logo.svg"}]]
           [:base {:href "/"}]
