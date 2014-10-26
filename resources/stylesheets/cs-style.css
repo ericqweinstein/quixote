@@ -202,6 +202,7 @@ ion-content {
 
 .cs-main-container {
   margin-top: 0 !important;
+  padding-top: 5% !important;
   width: 100%; }
   @media (min-width: 70em) {
     .cs-main-container {
@@ -661,8 +662,12 @@ form .search-button:hover {
   .search-results-header {
     margin-left: 30%; } }
 
+@media (max-width: 37.5em) {
+  #search-results {
+    margin-top: 30% !important; } }
 @media (min-width: 70em) {
-  .search-results {
+  #search-results {
+    margin-top: 8% !important;
     padding-left: 30.7%; } }
 
 .book-img-wrapper {

@@ -196,6 +196,7 @@ ion-content {
 // Containers
 .cs-main-container {
   margin-top: 0 !important;
+  padding-top: 5% !important;
   width: 100%;
 
   @include breakpoint(desktop) {
@@ -770,8 +771,13 @@ form .search-button:hover {
   }
 }
 
-.search-results {
+#search-results {
+  @include breakpoint(mobileonly) {
+    margin-top: 30% !important;
+  }
+
   @include breakpoint(desktop) {
+    margin-top: 8% !important;
     padding-left: 30.7%;
   }
 }

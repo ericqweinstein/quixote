@@ -1,6 +1,8 @@
-<div class='cs-logo' id='search-logo'>
-  <a href='#!'><img src='/img/cs_logo.svg' /></a>
-</div>
+<ion-header-bar>
+  <div class='cs-logo' id='search-logo'>
+    <a href='#!'><img src='/img/cs_logo.svg' /></a>
+  </div>
+</ion-header-bar>
 
 <div class='cs-social-media one-vertical-space bottom-clear social-btns-search' id='media-btns'>
   <a class='button social-btn' id='facebook' href='https://www.facebook.com/CityShelf' target='_blank'></a>
@@ -29,7 +31,7 @@
 </nav>
 
 <ion-content>
-  <ul class='cs-main-container list nav-clear search-results'>
+  <ul class='cs-main-container list nav-clear' id='search-results'>
     <li class='item' data-ng-repeat="result in results | orderBy : [sortBy(result), 'availability']">
       <div>
         <div class='book-img-wrapper'>
