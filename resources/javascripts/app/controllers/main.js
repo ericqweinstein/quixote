@@ -9,15 +9,9 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
   /**
    * The number of stores to query.
    * @type {Number}
-   * @todo Move this into the service layer.
+   * @todo Move this into the service layer. (EW 26 Oct 2014)
    */
   var NUMBER_OF_STORES = 8;
-
-  /**
-   * Set timeout for geolocation request (in ms).
-   * @type {Number}
-   */
-  var TIMEOUT = 3000;
 
   /**
    * Form data we'll use when searching for a book.
@@ -35,7 +29,7 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
    * Error handling function for geolocation.
    */
   var handleError = function() {
-    // Go to geolocation for now.
+    // Go to geolocation for now. (EW 26 Oct 2014)
     $location.path('/geolocation');
   };
 
@@ -52,7 +46,7 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
                       , position.coords.longitude);
 
         $location.path('/search');
-      }, handleError, { timeout: TIMEOUT });
+      }, handleError, { maximumAge: 600000, timeout: 3000, enableHighAccuracy: true });
     } else {
       // Geolocation is not available.
       $location.path('/geolocation');
@@ -77,7 +71,7 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
 
     if (!!Geolocation.fetch().length) {
       // See above comment re: hack. (EW 30 Sep 2014)
-      sleep(2000, function() {
+      sleep(3000, function() {
         $location.path('/search');
         $route.reload();
       });
