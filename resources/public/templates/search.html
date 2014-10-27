@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class='button-bar bar-stable item-btn-bar wf-standard-heavy type-small'>
-        <a href='{{ result.phone }}' class='button icon-left ion-ios7-telephone-outline wf-standard-heavy type-small drop-button'>TO CONFIRM</a>
+        <a href='{{ result.phone }}' class='button icon-left ion-ios7-telephone-outline wf-standard-heavy type-small drop-button'>TO {{ result.availability === 'On shelves now' ? 'RESERVE' : 'ORDER' }}</a>
         <button class='button wf-standard-heavy type-small' data-ng-click='showMap = !showMap'>
           {{ showMap? 'HIDE' : 'SHOW' }} MAP
         </button>
