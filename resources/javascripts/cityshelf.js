@@ -111,7 +111,7 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
         $location.path('/search');
       }
       , handleError
-      , { maximumAge: 600000, timeout: 3000, enableHighAccuracy: true });
+      , { maximumAge: 600000, timeout: 3000, enableHighAccuracy: false });
     } else {
       // Geolocation is not available.
       $location.path('/geolocation');
