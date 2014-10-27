@@ -9,6 +9,32 @@
    'use strict';
 
    /**
+    * Initializes any errors we may have gotten
+    * from the geolocation API.
+    * @type {String}
+    * @private
+    */
+   var geolocationError = '';
+
+   /**
+    * Sets the geolocation error string as needed.
+    * @param {String} msg The error message.
+    * @method
+    */
+   var setError = function(msg) {
+     geolocationError = msg;
+   };
+
+   /**
+    * Gets the geolocation error string.
+    * @return {String} The error string.
+    * @method
+    */
+   var getError = function() {
+     return geolocationError;
+   };
+
+   /**
     * Calculates the distance between one point (the user's
     * location) and another (any given bookstore). Eventually
     * we'll need to use the haversine formula or the spherical
@@ -28,6 +54,7 @@
    /**
     * Initializes the user's location.
     * @type {Array<Number>}
+    * @private
     */
    var coordinates = [];
 
@@ -74,7 +101,9 @@
    return {
      fetch: fetch
    , geolocate: geolocate
+   , getError: getError
    , proximity: proximity
    , set: set
+   , setError: setError
    };
  }]);

@@ -27,9 +27,21 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
 
   /**
    * Error handling function for geolocation.
+   * @param {PositionError} err The error thrown by
+   * the geolocation API.
    */
-  var handleError = function() {
-    // Go to geolocation for now. (EW 26 Oct 2014)
+  var handleError = function(err) {
+    var msg;
+
+    if (err.code === 1) {
+      // PERMISSION_DENIED: The user did not wish to share location.
+      msg = 'Okay!';
+    } else {
+      // POSITION_UNAVAILABLE or TIMEOUT: We could not find the user.
+      msg = 'Oops, we can\'t find you.';
+    }
+
+    Geolocation.setError(msg);
     $location.path('/geolocation');
   };
 
@@ -46,7 +58,9 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
                       , position.coords.longitude);
 
         $location.path('/search');
-      }, handleError, { maximumAge: 600000, timeout: 3000, enableHighAccuracy: true });
+      }
+      , handleError
+      , { maximumAge: 600000, timeout: 3000, enableHighAccuracy: true });
     } else {
       // Geolocation is not available.
       $location.path('/geolocation');

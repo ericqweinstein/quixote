@@ -31,6 +31,13 @@ CityShelf.controller('GeolocationCtrl', ['$scope', '$location', 'Geolocation', f
   $scope.form = {};
 
   /**
+   * Sets any errors we may have gotten
+   * from the geolocation API.
+   * @type {String}
+   */
+  $scope.error = Geolocation.getError();
+
+  /**
    * Retrieves a latitude and longitude
    * from Google's Geocoding service.
    * @method
@@ -71,9 +78,21 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
 
   /**
    * Error handling function for geolocation.
+   * @param {PositionError} err The error thrown by
+   * the geolocation API.
    */
-  var handleError = function() {
-    // Go to geolocation for now. (EW 26 Oct 2014)
+  var handleError = function(err) {
+    var msg;
+
+    if (err.code === 1) {
+      // PERMISSION_DENIED: The user did not wish to share location.
+      msg = 'Okay!';
+    } else {
+      // POSITION_UNAVAILABLE or TIMEOUT: We could not find the user.
+      msg = 'Oops, we can\'t find you.';
+    }
+
+    Geolocation.setError(msg);
     $location.path('/geolocation');
   };
 
@@ -90,7 +109,9 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
                       , position.coords.longitude);
 
         $location.path('/search');
-      }, handleError, { maximumAge: 600000, timeout: 3000, enableHighAccuracy: true });
+      }
+      , handleError
+      , { maximumAge: 600000, timeout: 3000, enableHighAccuracy: true });
     } else {
       // Geolocation is not available.
       $location.path('/geolocation');
@@ -350,6 +371,32 @@ CityShelf.config(['$routeProvider', '$locationProvider', function($routeProvider
    'use strict';
 
    /**
+    * Initializes any errors we may have gotten
+    * from the geolocation API.
+    * @type {String}
+    * @private
+    */
+   var geolocationError = '';
+
+   /**
+    * Sets the geolocation error string as needed.
+    * @param {String} msg The error message.
+    * @method
+    */
+   var setError = function(msg) {
+     geolocationError = msg;
+   };
+
+   /**
+    * Gets the geolocation error string.
+    * @return {String} The error string.
+    * @method
+    */
+   var getError = function() {
+     return geolocationError;
+   };
+
+   /**
     * Calculates the distance between one point (the user's
     * location) and another (any given bookstore). Eventually
     * we'll need to use the haversine formula or the spherical
@@ -369,6 +416,7 @@ CityShelf.config(['$routeProvider', '$locationProvider', function($routeProvider
    /**
     * Initializes the user's location.
     * @type {Array<Number>}
+    * @private
     */
    var coordinates = [];
 
@@ -415,8 +463,10 @@ CityShelf.config(['$routeProvider', '$locationProvider', function($routeProvider
    return {
      fetch: fetch
    , geolocate: geolocate
+   , getError: getError
    , proximity: proximity
    , set: set
+   , setError: setError
    };
  }]);
 

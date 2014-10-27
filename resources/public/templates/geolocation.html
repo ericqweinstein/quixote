@@ -5,7 +5,7 @@
 
   <div class='cs-main-container small-vertical-space logo-clear' id='geolocation-inner'>
     <p class='wf-standard type-larger cs-left-margin cs-right-margin'>
-      What's your current location? It helps us know which bookstores to search.
+      {{ error }} Where should we search?
     </p>
     <form name='geolocationForm' id='geolocation-form'>
       <input type='text' class='form-field' placeholder='Enter an address or zipcode' data-ng-model='form.location' />

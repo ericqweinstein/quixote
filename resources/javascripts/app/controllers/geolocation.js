@@ -18,6 +18,13 @@ CityShelf.controller('GeolocationCtrl', ['$scope', '$location', 'Geolocation', f
   $scope.form = {};
 
   /**
+   * Sets any errors we may have gotten
+   * from the geolocation API.
+   * @type {String}
+   */
+  $scope.error = Geolocation.getError();
+
+  /**
    * Retrieves a latitude and longitude
    * from Google's Geocoding service.
    * @method
