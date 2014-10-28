@@ -182,10 +182,10 @@ CityShelf.controller('SearchCtrl', ['$scope', '$http', 'Search', 'Geolocation', 
    * the search template. We actually do need to pass
    * the argument in order to properly get a hold on
    * the result object, hence the JSHint magic comment.
-   * @return {String|Number} A string in the case of price
-   * or availability; a number in the case of proximity
-   * (describing the distance between the user and the
-   * various bookstores).
+   * @return {String|Number} A string in the case of
+   * availability; a number in the case of price or
+   * proximity (the latter describing the distance
+   * between the user and the various bookstores).
    * @method
    */
 
@@ -193,7 +193,7 @@ CityShelf.controller('SearchCtrl', ['$scope', '$http', 'Search', 'Geolocation', 
   $scope.sortBy = function(predicate) {
     return function(result) {
       if ($scope.selected === 'price') {
-        return result.price;
+        return +result.price;
       } else if ($scope.selected === 'proximity') {
         return Geolocation.proximity(Geolocation.fetch()
                                    , [result.map.center.latitude
