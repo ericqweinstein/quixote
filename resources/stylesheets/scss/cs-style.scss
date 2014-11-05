@@ -217,7 +217,7 @@ ion-content {
 
   @include breakpoint(mobileonly) {
     padding: 2%;
-    width: 25%;
+    width: 20%;
   }
 
   @include breakpoint(phablet) {
@@ -722,6 +722,10 @@ form .search-button:hover {
 }
 
 #tagline {
+  @include breakpoint(mobileonly) {
+    margin-bottom: -4%;
+  }
+
   @include breakpoint(desktop) {
     float: right;
     width: 75%;

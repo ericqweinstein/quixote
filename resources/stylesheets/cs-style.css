@@ -224,7 +224,7 @@ ion-content {
   @media (max-width: 37.5em) {
     .cs-logo {
       padding: 2%;
-      width: 25%; } }
+      width: 20%; } }
   @media (min-width: 37.5em) {
     .cs-logo {
       padding: 3.5%;
@@ -627,6 +627,9 @@ form .search-button:hover {
   border-bottom: 2px #00fa9f solid !important;
   color: #00e69f !important; }
 
+@media (max-width: 37.5em) {
+  #tagline {
+    margin-bottom: -4%; } }
 @media (min-width: 70em) {
   #tagline {
     float: right;
