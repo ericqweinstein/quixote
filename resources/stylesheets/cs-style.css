@@ -600,7 +600,7 @@ form .search-button:hover {
   display: block; }
   @media (max-width: 37.5em) {
     #about-us {
-      margin-left: 1.5em !important; } }
+      margin-left: 0.75em !important; } }
   @media (min-width: 50em) {
     #about-us {
       margin-left: 2.5em !important; } }

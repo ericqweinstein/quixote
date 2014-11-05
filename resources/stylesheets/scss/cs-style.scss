@@ -686,7 +686,7 @@ form .search-button:hover {
   display: block;
 
   @include breakpoint(mobileonly) {
-    margin-left: 1.5em !important;
+    margin-left: 0.75em !important;
   }
 
   @include breakpoint(tablet) {
