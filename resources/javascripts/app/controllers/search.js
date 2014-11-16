@@ -10,7 +10,7 @@ CityShelf.controller('SearchCtrl', ['$scope', '$http', 'Search', 'Geolocation', 
    * The results of our search.
    * @type {Object}
    */
-  $scope.results = Search.fetch();
+  var allResults = $scope.results = Search.fetch();
 
   /**
    * The options by which we may search
@@ -64,6 +64,36 @@ CityShelf.controller('SearchCtrl', ['$scope', '$http', 'Search', 'Geolocation', 
    */
   $scope.select = function(item) {
     $scope.selected = item;
+  };
+
+  /**
+   * Keeps track of whether we're filtering
+   * results.
+   * @member {Boolean}
+   */
+  var isFiltered = false;
+
+  /**
+   * Filters the list of results by the
+   * passed in the criterion (e.g. filtering
+   * by ISBN will only show titles with
+   * that ISBN).
+   * @param {String} field The field on which
+   * to filter.
+   * @param {String} value The value to use
+   * when filtering based on the field.
+   * @return {Undefined}
+   */
+  $scope.filter = function(field, value) {
+    if (isFiltered) {
+      $scope.results = allResults;
+      isFiltered = false;
+    } else {
+      $scope.results = $scope.results.filter(function(element) {
+        return element[field] === value;
+      });
+      isFiltered = true;
+    }
   };
 
   /**
