@@ -662,9 +662,12 @@ form .search-button:hover {
   .search-results-header {
     margin-left: 30%; } }
 
+#number-of-results {
+  background: white !important; }
+
 @media (max-width: 37.5em) {
   #search-results {
-    margin-top: 30% !important; } }
+    margin-top: 40% !important; } }
 @media (min-width: 70em) {
   #search-results {
     margin-top: 8% !important;

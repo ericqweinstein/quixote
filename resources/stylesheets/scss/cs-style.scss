@@ -771,9 +771,13 @@ form .search-button:hover {
   }
 }
 
+#number-of-results {
+  background: white !important;
+}
+
 #search-results {
   @include breakpoint(mobileonly) {
-    margin-top: 30% !important;
+    margin-top: 40% !important;
   }
 
   @include breakpoint(desktop) {
