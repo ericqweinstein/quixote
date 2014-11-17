@@ -777,7 +777,7 @@ form .search-button:hover {
 
 #search-results {
   @include breakpoint(mobileonly) {
-    margin-top: 40% !important;
+    margin-top: 45% !important;
   }
 
   @include breakpoint(desktop) {
