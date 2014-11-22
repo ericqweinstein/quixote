@@ -7,6 +7,7 @@
             [liberator.core :refer [resource defresource]]
             [ring.adapter.jetty :refer [run-jetty]]
             [ring.util.codec :as codec]
+            [ring.util.response :as resp]
             [compojure.core :refer [defroutes routes GET ANY]]
             [compojure.route :as route]
             [compojure.handler]
@@ -51,6 +52,9 @@
 
   ; The home page.
   (GET "/" [] (home/index "CityShelf"))
+
+  ; The landing page for desktop.
+  (GET "/quux" [] (resp/file-response "landing.html" {:root "resources/public"}))
 
   ; API routes.
   (apply routes
