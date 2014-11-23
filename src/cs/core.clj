@@ -64,9 +64,6 @@
       ;... or the landing page for non-mobile devices.
       (resp/file-response "landing.html" {:root "resources/public"})))
 
-  ; @todo Remove once testing is complete. (EW 23 Nov 2014)
-  (GET "/quux" [] (resp/file-response "landing.html" {:root "resources/public"}))
-
   ; API routes.
   (apply routes
     (pmap #(GET (str "/api/stores/" (:id %) "/")
