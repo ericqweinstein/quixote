@@ -17,6 +17,13 @@
             [cs.filter :refer [update remove-unavailable]]
             [cs.views.index :as home]))
 
+(defn mobile?
+  "Determines whether a client is using a mobile device."
+  [user-agent]
+  (if (empty? user-agent)
+    nil
+    (re-find #"(iPhone|iPod|Android|BlackBerry)" user-agent)))
+
 (defn config
   "Loads the configuration file."
   [filename]
@@ -31,7 +38,6 @@
   "Generates a JSON payload from the scraped URL."
   [store query]
 
-  ; @todo Refactor into a multimethod once working. (EW 21 Oct 2014)
   (cond
     (re-find #"strandbooks" (:storeLink store))
     (remove-unavailable (update (strand/search store query)))
@@ -50,10 +56,15 @@
   ; Static assets.
   (route/files "/" {:root "resources/public"})
 
-  ; The home page.
-  (GET "/" [] (home/index "CityShelf"))
+  (GET "/"
+    {:keys [headers params body] :as request}
+    (if (mobile? (get headers "user-agent"))
+      ; The mobile web application...
+      (home/index "CityShelf")
+      ;... or the landing page for non-mobile devices.
+      (resp/file-response "landing.html" {:root "resources/public"})))
 
-  ; The landing page for desktop.
+  ; @todo Remove once testing is complete. (EW 23 Nov 2014)
   (GET "/quux" [] (resp/file-response "landing.html" {:root "resources/public"}))
 
   ; API routes.
