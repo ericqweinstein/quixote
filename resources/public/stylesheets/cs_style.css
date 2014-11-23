@@ -173,20 +173,27 @@ nav {
 
 .captions {
   display: block;
-  margin: 0 auto 5em 6em;
+  margin: 0 auto 5em 16%;
   width: 80%;
 }
 
 .caption {
   display: inline-block;
-  margin: 0 auto 0 1em;
+  margin-right: 11%;
   width: 17%;
 }
 
 .caption-number {
   display: inline-block;
+  height: 100%;
   font-family: 'CooperHewitt-Bold';
-  margin: 0 auto 0 7.75em;
+  margin-right: 3%;
+  position: relative;
+}
+
+.caption-number span {
+  position: absolute;
+  top: -2.125em;
 }
 
 .heading {
