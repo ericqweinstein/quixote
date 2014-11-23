@@ -244,12 +244,12 @@ nav {
 }
 
 #connect {
-  margin-bottom: 10em;
+  margin-bottom: 12em;
 }
 
 #connect .section-header {
   color: black;
-  margin: 6em 0 4em 0;
+  margin: 4em 0;
 }
 
 #underbar {
@@ -319,7 +319,7 @@ nav {
 
 .social-media .links {
   display: block;
-  margin-left: 32%;
+  margin-left: 82%;
   width: 100%;
 }
 
