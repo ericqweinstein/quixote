@@ -125,15 +125,14 @@ nav {
 
 #nav {
   display: inline-block;
-  float: right;
   margin-top: 6%;
-  width: 60%;
+  text-align: right;
+  width: 80%;
 }
 
 #nav a {
   color: black;
   font-weight: bold;
-  text-align: right;
   text-decoration: none;
   margin-right: 7%;
 }
@@ -145,12 +144,12 @@ nav {
 .logo {
   display: inline-block;
   float: left;
-  width: 40%;
+  width: 20%;
 }
 
 .logo img {
   margin: 2% 0 0 1%;
-  width: 27%;
+  width: 54%;
 }
 
 .iphone {
