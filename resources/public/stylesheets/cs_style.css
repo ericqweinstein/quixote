@@ -137,6 +137,12 @@ nav {
   margin-right: 7%;
 }
 
+@media screen and (max-width: 50em) {
+  #nav a {
+    font-size: 0.65em;
+  }
+}
+
 #nav a:hover {
   border-bottom: 2px solid #00fa9f;
 }
@@ -306,7 +312,7 @@ nav {
 
 .social-media .links {
   display: block;
-  margin-left: 14em;
+  margin-left: 32%;
   width: 100%;
 }
 
