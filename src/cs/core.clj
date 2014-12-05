@@ -20,9 +20,8 @@
 (defn mobile?
   "Determines whether a client is using a mobile device."
   [user-agent]
-  (if (empty? user-agent)
-    nil
-    (re-find #"(iPhone|iPod|Android|BlackBerry)" user-agent)))
+  (when (seq user-agent)
+    (re-find #"(iPhone|iPod|Android|BlackBerry|Windows Phone)" user-agent)))
 
 (defn config
   "Loads the configuration file."
@@ -41,7 +40,7 @@
   (cond
     (re-find #"strandbooks" (:storeLink store))
     (remove-unavailable (update (strand/search store query)))
-    (re-find #"(culture|greenlight|word)" (:storeLink store))
+    (re-find #"(culture|greenlight|word|stmarks)" (:storeLink store))
     (remove-unavailable (update (site/search store query)))
     :else
     (remove-unavailable (update (solr/search store query)))))

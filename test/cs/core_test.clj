@@ -7,5 +7,10 @@
             [cs.core :refer :all]))
 
 (facts "About CityShelf"
- (fact "It has an example test")
-  (+ 1 1) => 2)
+ (fact "It detects mobile devices")
+  (mobile? "iPhone") => ["iPhone" "iPhone"]
+  (mobile? "iPod") => ["iPod" "iPod"]
+  (mobile? "Android") => ["Android" "Android"]
+  (mobile? "BlackBerry") => ["BlackBerry" "BlackBerry"]
+  (mobile? "Windows Phone") => ["Windows Phone" "Windows Phone"]
+  (mobile? "Macintosh") => nil)
