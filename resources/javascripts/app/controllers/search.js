@@ -3,7 +3,7 @@
  * @author Eric Weinstein <eric.q.weinstein@gmail.com>
  */
 
-CityShelf.controller('SearchCtrl', ['$scope', '$http', 'Search', 'Geolocation', function SearchCtrl($scope, $http, Search, Geolocation) {
+CityShelf.controller('SearchCtrl', ['$scope', '$http', '$ionicScrollDelegate', 'Search', 'Geolocation', function SearchCtrl($scope, $http, $ionicScrollDelegate, Search, Geolocation) {
   'use strict';
 
   /**
@@ -18,6 +18,15 @@ CityShelf.controller('SearchCtrl', ['$scope', '$http', 'Search', 'Geolocation', 
    * @type {Array}
    */
   $scope.options = ['proximity', 'price'];
+
+  /**
+   * Scrolls the user to the top of the view.
+   * @method
+   */
+  var scrollTop = function() {
+    console.log('Scrolling to top!');
+    $ionicScrollDelegate.scrollTop();
+  };
 
   /**
    * Determines the order in which results appear.
@@ -94,6 +103,8 @@ CityShelf.controller('SearchCtrl', ['$scope', '$http', 'Search', 'Geolocation', 
       });
       isFiltered = true;
     }
+
+    scrollTop();
   };
 
   /**
