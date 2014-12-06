@@ -309,12 +309,6 @@ ion-content {
   width: 70%;
 }
 
-.result-price {
-  clear: left;
-  float: right;
-  width: 25%;
-}
-
 .result-store {
   float: left;
   width: 100%;
@@ -738,6 +732,10 @@ form .search-button:hover {
   line-height: 50px !important;
   margin-right: 0;
   width: 88%;
+
+  @include breakpoint(mobileonly) {
+    margin-left: 2%;
+  }
 
   @include breakpoint(desktop) {
     margin-left: -9%;
