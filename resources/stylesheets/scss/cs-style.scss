@@ -771,13 +771,11 @@ form .search-button:hover {
 
 #number-of-results {
   background: white !important;
+  margin: 30% auto -20% auto;
+  padding-bottom: 0;
 }
 
 #search-results {
-  @include breakpoint(mobileonly) {
-    margin-top: 45% !important;
-  }
-
   @include breakpoint(desktop) {
     margin-top: 8% !important;
     padding-left: 30.7%;

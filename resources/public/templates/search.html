@@ -28,14 +28,15 @@
       {{ option | capitalize }}
     </button>
   </div>
+</nav>
+
+<ion-content>
   <div id='number-of-results'>
     <p class='wf-standard type-large align-center small-vertical-space'>
       {{ results.length }} results found
     </p>
   </div>
-</nav>
 
-<ion-content>
   <ul class='cs-main-container list nav-clear' id='search-results'>
     <li class='item' data-ng-repeat="result in results | orderBy : [sortBy(result), 'availability']">
       <div>
