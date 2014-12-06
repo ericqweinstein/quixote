@@ -19,7 +19,7 @@
     </button>
   </form>
 
-  <a class='button icon-left ion-chevron-left cs-ui-btn back-btn swappable-btn-left' href='/'></a>
+  <button class='button icon-left ion-chevron-left cs-ui-btn back-btn swappable-btn-left' data-ng-click='back("/")'></button>
   <button id='search-text' class='button icon-right ion-close full-width cs-on-btn wf-standard-heavy type-large swappable-bar' data-ng-click='showSearch = !showSearch' data-ng-show='showSearch'>
     {{ searchQuery | capitalize }}
   </button>

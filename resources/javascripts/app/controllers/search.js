@@ -3,7 +3,21 @@
  * @author Eric Weinstein <eric.q.weinstein@gmail.com>
  */
 
-CityShelf.controller('SearchCtrl', ['$scope', '$http', '$ionicScrollDelegate', 'Search', 'Geolocation', function SearchCtrl($scope, $http, $ionicScrollDelegate, Search, Geolocation) {
+CityShelf.controller('SearchCtrl', [
+    '$scope'
+  , '$http'
+  , '$location'
+  , '$ionicScrollDelegate'
+  , 'Search'
+  , 'Geolocation'
+  , function SearchCtrl(
+      $scope
+    , $http
+    , $location
+    , $ionicScrollDelegate
+    , Search
+    , Geolocation) {
+
   'use strict';
 
   /**
@@ -105,6 +119,24 @@ CityShelf.controller('SearchCtrl', ['$scope', '$http', '$ionicScrollDelegate', '
     }
 
     scrollTop();
+  };
+
+  /**
+   * Handles back button behavior (i.e. goes back to
+   * the home page if we're not filtered, returns to
+   * filtered results if we are).
+   * @param {String} url The location to go back to.
+   * @method
+   */
+  $scope.back = function(url) {
+    // @todo DRY this up. (EW 06 Dec 2014)
+    if (isFiltered) {
+      $scope.results = allResults;
+      isFiltered = false;
+      scrollTop();
+    } else {
+      $location.path(url);
+    }
   };
 
   /**
