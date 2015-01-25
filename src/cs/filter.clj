@@ -1,6 +1,7 @@
-(ns cs.filter ^{:doc "Filters and normalizes book metadata
-                     returned from the various bookstores."
-                :author "Eric Weinstein <eric.q.weinstein@gmail.com>"})
+(ns ^{:doc "Filters and normalizes book metadata
+           returned from the various bookstores."
+      :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
+  cs.filter)
 
 (declare available?)
 (declare normalize)

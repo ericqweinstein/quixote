@@ -1,5 +1,6 @@
-(ns cs.core ^{:doc "CityShelf's web server."
-              :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
+(ns ^{:doc "CityShelf's web server."
+      :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
+  cs.core
   (:require [clojure.java.io :as io]
             [liberator.core :refer [resource defresource]]
             [ring.adapter.jetty :refer [run-jetty]]

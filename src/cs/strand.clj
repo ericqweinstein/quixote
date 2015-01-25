@@ -1,5 +1,6 @@
-(ns cs.strand ^{:doc "Scrapes The Strand."
-                :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
+(ns ^{:doc "Scrapes The Strand."
+      :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
+  cs.strand
   (:require [clojure.string :as string]
             [net.cgrand.enlive-html :as html]))
 

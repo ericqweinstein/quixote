@@ -1,6 +1,7 @@
-(ns cs.site ^{:doc "Scrapes indie bookstore sites that
-                   leverage Solr /search/site."
-              :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
+(ns ^{:doc "Scrapes indie bookstore sites that
+           leverage Solr /search/site."
+      :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
+  cs.site
   (:require [clojure.string :as string]
             [net.cgrand.enlive-html :as html]))
 
