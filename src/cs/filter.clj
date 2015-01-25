@@ -1,8 +1,6 @@
-; @file Filters and normalizes book metadata
-; returned from the various bookstores.
-; @author Eric Weinstein <eric.q.weinstein@gmail.com>
-
-(ns cs.filter)
+(ns cs.filter ^{:doc "Filters and normalizes book metadata
+                     returned from the various bookstores."
+                :author "Eric Weinstein <eric.q.weinstein@gmail.com>"})
 
 (declare available?)
 (declare normalize)

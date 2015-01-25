@@ -1,7 +1,5 @@
-; @file Scrapes The Strand.
-; @author Eric Weinstein <eric.q.weinstein@gmail.com>
-
-(ns cs.strand
+(ns cs.strand ^{:doc "Scrapes The Strand."
+                :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
   (:require [clojure.string :as string]
             [net.cgrand.enlive-html :as html]))
 

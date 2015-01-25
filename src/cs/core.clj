@@ -1,8 +1,5 @@
-; @file CityShelf's web server.
-; @author Eric Weinstein <eric.q.weinstein@gmail.com>
-; @copyright CityShelf, 2014
-
-(ns cs.core
+(ns cs.core ^{:doc "CityShelf's web server."
+              :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
   (:require [clojure.java.io :as io]
             [liberator.core :refer [resource defresource]]
             [ring.adapter.jetty :refer [run-jetty]]

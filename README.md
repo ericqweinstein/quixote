@@ -41,4 +41,4 @@ CityShelf currently lives on Heroku at http://cityshelf.herokuapp.com/.
 You can generate documentation with `grunt jsdoc` (JavaScript) and `lein doc` (Clojure).
 
 ## License
-Copyright © 2014 CityShelf. All rights reserved.
+Copyright © 2015 CityShelf. All rights reserved.
