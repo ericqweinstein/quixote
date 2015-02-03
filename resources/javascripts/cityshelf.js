@@ -60,9 +60,9 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
   /**
    * The number of stores to query.
    * @type {Number}
-   * @todo Move this into the service layer. (EW 26 Oct 2014)
+   * @todo Move this into the service layer. (EW 02 Feb 2015)
    */
-  var NUMBER_OF_STORES = 8;
+  var NUMBER_OF_STORES = 7;
 
   /**
    * Form data we'll use when searching for a book.
@@ -96,6 +96,12 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
     $location.path('/geolocation');
   };
 
+  // This is a SERIOUS hack and should be
+  // removed as soon as possible. (EW 02 Feb 2015)
+  function sleep(millis, cb) {
+    setTimeout(function() { cb(); }, millis);
+  }
+
   /**
    * Retrieves the user's location via the
    * HTML5 Geolocation API and sets it on
@@ -117,12 +123,6 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
       $location.path('/geolocation');
     }
   };
-
-  // This is a SERIOUS hack and should be
-  // removed as soon as possible. (EW 30 Sep 2014)
-  function sleep(millis, cb) {
-    setTimeout(function() { cb(); }, millis);
-  }
 
   /**
    * Kick off requests to the API for book

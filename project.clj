@@ -5,10 +5,10 @@
   :description "CityShelf: A search aggregator for independent bookstores."
   :url "http://www.cityshelf.com"
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [liberator "0.12.1"]
-                 [compojure "1.1.9"]
-                 [ring/ring-core "1.3.1"]
-                 [ring/ring-jetty-adapter "1.3.1"]
+                 [liberator "0.12.2"]
+                 [compojure "1.3.1"]
+                 [ring/ring-core "1.3.2"]
+                 [ring/ring-jetty-adapter "1.3.2"]
                  [enlive "1.1.5"]
                  [hiccup "1.0.5"]]
   :main ^:skip-aot cs.core

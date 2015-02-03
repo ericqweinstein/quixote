@@ -11,7 +11,6 @@
             [compojure.handler]
             [cs.solr :as solr]
             [cs.site :as site]
-            [cs.strand :as strand]
             [cs.filter :refer [update remove-unavailable]]
             [cs.views.index :as home]))
 
@@ -35,12 +34,9 @@
   "Generates a JSON payload from the scraped URL."
   [store query]
 
-  (cond
-    (re-find #"strandbooks" (:storeLink store))
-    (remove-unavailable (update (strand/search store query)))
+  (if
     (re-find #"(culture|greenlight|word|stmarks)" (:storeLink store))
     (remove-unavailable (update (site/search store query)))
-    :else
     (remove-unavailable (update (solr/search store query)))))
 
 (defresource indie [store query]

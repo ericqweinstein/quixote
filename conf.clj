@@ -32,11 +32,6 @@
   :storeLink "http://www.stmarksbookshop.com"
   :storeName "St. Mark's Bookshop"}
  {:id 6
-  :map {:center {:latitude 40.733481 :longitude -73.990871} :zoom 14}
-  :phone "tel:+1-212-473-1452"
-  :storeLink "http://www.strandbooks.com/"
-  :storeName "Strand Bookstore"}
- {:id 7
   :map {:center {:latitude 40.729197 :longitude -73.957319} :zoom 14}
   :phone "tel:+1-718-383-0096"
   :storeLink "http://www.wordbookstores.com"
