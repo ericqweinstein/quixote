@@ -58,25 +58,19 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
    * @method
    */
   $scope.setLocation = function() {
-    // If anyone ever asks you for the definition of technical debt,
-    // feel free to refer them to the following. (EW 02 Feb 2015)
-    sleep(3000, function() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          Geolocation.set(position.coords.latitude
-                        , position.coords.longitude);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        Geolocation.set(position.coords.latitude
+                      , position.coords.longitude);
 
-          $location.path('/search');
-          $route.reload();
-        }
-        , handleError
-        , { maximumAge: 600000, timeout: 3000, enableHighAccuracy: false });
-      } else {
-        // Geolocation is not available.
-        $location.path('/geolocation');
-        $route.reload();
+        $location.path('/search');
       }
-    });
+      , handleError
+      , { maximumAge: 600000, timeout: 3000, enableHighAccuracy: false });
+    } else {
+      // Geolocation is not available.
+      $location.path('/geolocation');
+    }
   };
 
   /**

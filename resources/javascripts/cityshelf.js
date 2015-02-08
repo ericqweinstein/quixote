@@ -109,23 +109,19 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
    * @method
    */
   $scope.setLocation = function() {
-    sleep(3000, function() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          Geolocation.set(position.coords.latitude
-                        , position.coords.longitude);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        Geolocation.set(position.coords.latitude
+                      , position.coords.longitude);
 
-          $location.path('/search');
-          $route.reload();
-        }
-        , handleError
-        , { maximumAge: 600000, timeout: 3000, enableHighAccuracy: false });
-      } else {
-        // Geolocation is not available.
-        $location.path('/geolocation');
-        $route.reload();
+        $location.path('/search');
       }
-    });
+      , handleError
+      , { maximumAge: 600000, timeout: 3000, enableHighAccuracy: false });
+    } else {
+      // Geolocation is not available.
+      $location.path('/geolocation');
+    }
   };
 
   /**
