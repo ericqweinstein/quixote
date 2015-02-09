@@ -15,7 +15,8 @@
   <form name='searchForm' data-ng-controller='MainCtrl' class='search-bar'>
     <input type='text' id='search-again' class='form-field swappable-bar' placeholder='Title, author or ISBN' data-ng-model='form.book' size='16' />
     <button class='cs-search-btn swappable-btn-right' data-ng-click='search()'>
-      <i class='icon ion-search i cs-icon'></i>
+      <i class='icon ion-search i cs-icon' data-ng-hide='loading'></i>
+      <i class='icon ion-loading-c' data-ng-show='loading'></i>
     </button>
   </form>
 
