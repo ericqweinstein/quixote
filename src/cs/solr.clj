@@ -17,13 +17,17 @@
         image        (pmap #(get-in % [:attrs :src]) (html/select url [:.abaproduct-image :img]))
         link         (pmap #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.abaproduct-title :a])))
         availability (pmap #(string/trim (second (re-find #"Availability: ([a-zA-Z0-9 ]+)" %)))
+                           (map html/text (html/select url [:.abaproduct-more-details])))
+        isbn         (pmap #(string/trim (second (re-find #"ISBN-13: ([0-9 ]+)" %)))
                            (map html/text (html/select url [:.abaproduct-more-details])))]
     (map #(merge store {:title %1
                         :author %2
                         :price %3
                         :img %4
                         :bookLink %5
-                        :availability %6}) title author price image link availability)))
+                        :availability %6
+                        :isbn %7
+                        }) title author price image link availability isbn)))
 
 (defn- fetch-url
   "Creates an Enlive HTML resource from the provided URL string."

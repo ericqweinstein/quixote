@@ -18,6 +18,9 @@
         link         (pmap #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.search-result :.title :a])))
         availability (pmap #(subs % 14)
                            (filter #(re-find #"Availability: ([a-zA-Z0-9 ]+)" %)
+                                   (map html/text (html/select url [:.abaproduct-details :span]))))
+        isbn         (pmap #(subs % 9)
+                           (filter #(re-find #"ISBN-13: ([0-9 ]+)" %)
                                    (map html/text (html/select url [:.abaproduct-details :span]))))]
     (map #(merge store {:title %1
                         :author %2
@@ -25,7 +28,8 @@
                         :img %4
                         :bookLink %5
                         :availability %6
-                        }) title author price image link availability)))
+                        :isbn %7
+                        }) title author price image link availability isbn)))
 
 (defn- fetch-url
   "Creates an Enlive HTML resource from the provided URL string."

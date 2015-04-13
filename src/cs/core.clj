@@ -35,9 +35,9 @@
   [store query]
 
   (if
-    (re-find #"(culture|greenlight|word|stmarks)" (:storeLink store))
-    (remove-unavailable (update (site/search store query)))
-    (remove-unavailable (update (solr/search store query)))))
+    (re-find #"mcnally" (:storeLink store))
+    (remove-unavailable (update (solr/search store query)))
+    (remove-unavailable (update (site/search store query)))))
 
 (defresource indie [store query]
   :available-media-types ["application/json"]
