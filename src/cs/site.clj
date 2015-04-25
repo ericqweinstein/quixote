@@ -31,6 +31,7 @@
                         :isbn %7
                         }) title author price image link availability isbn)))
 
+;; TODO Extract this out into a helper. (EW 24 Apr 2015)
 (defn- fetch-url
   "Creates an Enlive HTML resource from the provided URL string."
   [url]

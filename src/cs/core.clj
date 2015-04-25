@@ -11,6 +11,7 @@
             [compojure.handler]
             [cs.solr :as solr]
             [cs.site :as site]
+            [cs.booksite :as booksite]
             [cs.filter :refer [update remove-unavailable]]
             [cs.views.index :as home]))
 
@@ -33,11 +34,10 @@
 (defn scrape
   "Generates a JSON payload from the scraped URL."
   [store query]
-
-  (if
-    (re-find #"mcnally" (:storeLink store))
-    (remove-unavailable (update (solr/search store query)))
-    (remove-unavailable (update (site/search store query)))))
+  (cond
+    (re-find #"mcnally"  (:storeLink store)) (remove-unavailable (update (solr/search store query)))
+    (re-find #"booksite" (:storeLink store)) (remove-unavailable (update (booksite/search store query)))
+    :else                                    (remove-unavailable (update (site/search store query)))))
 
 (defresource indie [store query]
   :available-media-types ["application/json"]
@@ -46,28 +46,28 @@
 
 (defroutes cs-routes
   "CityShelf routes."
-  ; Static assets.
+  ;; Static assets.
   (route/files "/" {:root "resources/public"})
 
   (GET "/"
     {:keys [headers params body] :as request}
     (if (mobile? (get headers "user-agent"))
-      ; The mobile web application...
+      ;; The mobile web application...
       (home/index "CityShelf")
-      ;... or the landing page for non-mobile devices.
+      ;;... or the landing page for non-mobile devices.
       (resp/file-response "landing.html" {:root "resources/public"})))
 
-  ; API routes.
+  ;; API routes.
   (apply routes
     (pmap #(GET (str "/api/stores/" (:id %) "/")
                {params :query-params}
                (indie % (codec/url-encode (get params "query"))))
          store-data))
 
-  ; Angular handles all routing, including 404s. If a 404
-  ; gets to Clojure, it's a legitimate route that Angular
-  ; should handle, but Clojure received (e.g. as a result
-  ; of a page refresh).
+  ;; Angular handles all routing, including 404s. If a 404
+  ;; gets to Clojure, it's a legitimate route that Angular
+  ;; should handle, but Clojure received (e.g. as a result
+  ;; of a page refresh).
   (route/not-found (home/index "CityShelf")))
 
 (def handler

@@ -3,8 +3,7 @@
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
   cs.filter)
 
-(declare available?)
-(declare normalize)
+(declare available? normalize)
 
 (defn update
   "Updates book availability metadata with normalized text."
@@ -27,5 +26,5 @@
   (cond
     (re-find #"(?ix) not" text) "Unavailable"
     (re-find #"(?ix) warehouse|distributor|special|usually|currently" text) "Out of stock"
-    (re-find #"(?ix) in\s+stock|available|table|section|shelves" text) "On shelves now"
+    (re-find #"(?ix) in\s+stock|available|table|section|shelves|in\s+the\s+store" text) "On shelves now"
     :else "Unavailable"))
