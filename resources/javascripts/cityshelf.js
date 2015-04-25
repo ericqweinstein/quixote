@@ -62,7 +62,7 @@ CityShelf.controller('MainCtrl', ['$scope', '$location', '$route', 'Search', 'Ge
    * @type {Number}
    * @todo Move this into the service layer. (EW 02 Feb 2015)
    */
-  var NUMBER_OF_STORES = 7;
+  var NUMBER_OF_STORES = 8;
 
   /**
    * Form data we'll use when searching for a book.
