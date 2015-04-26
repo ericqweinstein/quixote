@@ -15,6 +15,7 @@
   </head>
 
   <body>
+    <div id="border-top"></div>
     <nav>
       <div class="logo">
         <img src="img/CityShelf_logo.png" />
@@ -40,7 +41,7 @@
       TO GET STARTED, VISIT CITYSHELF.COM ON YOUR PHONE.
     </h2>
 
-    <div class="iphone">
+    <div class="iphone" id="hiw">
       <img src="img/CityShelf_mobile.png" alt="CityShelf" />
       <div class="captions">
         <div class="caption-number"><span>01</span></div>
@@ -130,4 +131,23 @@
       /&nbsp;&nbsp;&nbsp;2015 CityShelf&trade;
     </footer>
   </body>
+
+  <!-- Not jazzed about this, but worse things have happened. (EW 25 Apr 2015) -->
+  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script>
+    $(function() {
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top - 200
+            }, 1000);
+            return false;
+          }
+        }
+      });
+    });
+  </script>
 </html>

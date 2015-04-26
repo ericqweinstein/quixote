@@ -119,8 +119,21 @@ body {
   font-weight: normal;
 }
 
+#border-top {
+  background-color: #00fa9f;
+  height: 1em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1001;
+}
+
 nav {
-  height: 12em;
+  background-color: white;
+  height: 10em;
+  position: fixed;
+  width: calc(100% - 2em);
+  z-index: 1000;
 }
 
 #nav {
@@ -204,6 +217,7 @@ nav {
   font-weight: normal;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 3.6em;
   text-align: center;
   -webkit-font-smoothing: antialiased;
   width: 80%;
