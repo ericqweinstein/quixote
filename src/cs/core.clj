@@ -6,9 +6,11 @@
             [ring.adapter.jetty :refer [run-jetty]]
             [ring.util.codec :as codec]
             [ring.util.response :as resp]
-            [compojure.core :refer [defroutes routes GET ANY]]
+            [compojure.core :refer [defroutes routes GET POST ANY]]
             [compojure.route :as route]
             [compojure.handler]
+            [clj-http.client :as client]
+            [cheshire.core :as json]
             [cs.solr :as solr]
             [cs.site :as site]
             [cs.booksite :as booksite]
@@ -56,6 +58,19 @@
       (home/index "CityShelf")
       ;;... or the landing page for non-mobile devices.
       (resp/file-response "landing.html" {:root "resources/public"})))
+
+  ;; Handles subscribing users to the e-mail list via MailChimp.
+  ;; When we separate the API, landing page, and mobile website,
+  ;; this route will be moved to the landing page app. (EW 26 Apr 2015)
+  (POST "/subscribe"
+    {:keys [headers params body] :as request}
+     (let [api-req {:apikey "49f5b85310aff273db3b5a8bf497b524-us9"
+                    :id "c2f178f901"
+                    :email {:email (:email params)}}
+           api-rsp (client/post "https://us9.api.mailchimp.com/2.0/lists/subscribe.json"
+                                {:body (json/generate-string api-req)
+                                 :content-type :json
+                                 :accept :json})]))
 
   ;; API routes.
   (apply routes

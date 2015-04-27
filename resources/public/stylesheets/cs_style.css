@@ -252,6 +252,67 @@ nav {
   margin-top: 1em;
 }
 
+.left-column {
+  float: left;
+  margin-left: 10%;
+  width: 40%;
+}
+
+.right-column {
+  float: right;
+  margin-right: 10%;
+  width: 40%;
+}
+
+#news {
+  background-color: #eee;
+  padding: 5em 0 25em 0;
+}
+
+#news .section-header {
+  color: black;
+  margin-bottom: 5em;
+}
+
+.news-item {
+  margin-top: 2em;
+}
+
+.news-item-date {
+  display: inline-block;
+  font-family: "CooperHewitt-Light";
+  vertical-align: top;
+  width: 25%;
+}
+
+.news-item-description {
+  display: inline-block;
+  width: 60%;
+}
+
+.news-item-description p {
+  font-family: "CooperHewitt-Bold"
+}
+
+.news-item-description a {
+  color: black;
+  font-size: 0.75em;
+}
+
+#mc-email {
+  margin-top: 2px;
+  width: 79%;
+}
+
+#mc-subscribe {
+  margin-bottom: 1em;
+  margin-left: -3px;
+}
+
+#bookstores {
+  background-color: #eee;
+}
+
 #bookstores .section-header {
   color: black;
   margin-bottom: 3em;
@@ -280,6 +341,13 @@ nav {
   text-align: center;
   text-decoration: underline;
   width: 100%;
+}
+
+.section-subheader {
+  color: black;
+  display: block;
+  margin: 2em 0 1em 0;
+  text-decoration: underline;
 }
 
 .about-section figure {
@@ -327,13 +395,8 @@ nav {
 }
 
 .social-media {
-  text-align: center;
-  width: 50%;
-}
-
-.social-media .links {
   display: block;
-  margin-left: 82%;
+  margin-left: -1em;
   width: 100%;
 }
 
@@ -380,6 +443,7 @@ nav {
 .feedback {
   font-family: 'CooperHewitt-Light';
   height: 12em;
+  margin-top: -1em;
 }
 
 .feedback h3 {
@@ -478,7 +542,7 @@ form .submit-button {
   border: 3px solid #00fa9f;
   color: #1d1e1e;
   cursor: pointer;
-  font-family: 'CooperHewitt-Book', Helvetica, Arial, sans-serif;
+  font-family: 'CooperHewitt-Bold', Helvetica, Arial, sans-serif;
   font-size: 1rem;
   height: 3em;
   -moz-transition: all 0.3s linear;
@@ -486,7 +550,7 @@ form .submit-button {
   text-align: center;
   transition: all 0.3s linear;
   -webkit-transition: all 0.3s linear;
-  width: 9rem;
+  width: 20%;
   top: 0;
 }
 
