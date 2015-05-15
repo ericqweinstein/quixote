@@ -1,7 +1,6 @@
-; @file Tests for CityShelf's API filters.
-; @author Eric Weinstein <eric.q.weinstein@gmail.com>
-
-(ns cs.filter-test
+(ns ^{:doc "Tests for filter.clj"
+      :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
+  cs.filter-test
   (:require [clojure.test :refer :all]
             [midje.sweet :refer :all]
             [cs.filter :refer :all]))

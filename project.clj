@@ -1,10 +1,8 @@
-; @file Project definition file.
-; @author Eric Weinstein <eric.q.weinstein@gmail.com>
-
 (defproject cityshelf "0.1.0"
   :description "CityShelf: A search aggregator for independent bookstores."
   :url "http://www.cityshelf.com"
   :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojure/math.numeric-tower "0.0.4"]
                  [liberator "0.12.2"]
                  [compojure "1.3.3"]
                  [cheshire "5.4.0"]

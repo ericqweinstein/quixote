@@ -1,7 +1,6 @@
-; @file Tests for CityShelf's web server.
-; @author Eric Weinstein <eric.q.weinstein@gmail.com>
-
-(ns cs.core-test
+(ns ^{:doc "Tests for the core.clj"
+      :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
+  cs.core-test
   (:require [clojure.test :refer :all]
             [midje.sweet :refer :all]
             [cs.core :refer :all]))

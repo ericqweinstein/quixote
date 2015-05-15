@@ -11,6 +11,7 @@
             [compojure.handler]
             [clj-http.client :as client]
             [cheshire.core :as json]
+            [cs.location :as location]
             [cs.solr :as solr]
             [cs.site :as site]
             [cs.booksite :as booksite]
@@ -71,6 +72,13 @@
                                 {:body (json/generate-string api-req)
                                  :content-type :json
                                  :accept :json})]))
+
+  (GET "/books/"
+    {params :query-params}
+       (let [latitude  (get params "latitude")
+             longitude (get params "longitude")
+             book      (get params "query")]
+         (map #(indie % (codec/url-encode book)) store-data)))
 
   ;; API routes.
   (apply routes
