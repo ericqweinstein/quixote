@@ -3,10 +3,10 @@
   :url "http://www.cityshelf.com"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.clojure/math.numeric-tower "0.0.4"]
-                 [liberator "0.12.2"]
-                 [compojure "1.3.3"]
+                 [liberator "0.13"]
+                 [compojure "1.3.4"]
                  [cheshire "5.4.0"]
-                 [clj-http "1.1.1"]
+                 [clj-http "1.1.2"]
                  [ring/ring-core "1.3.2"]
                  [ring/ring-jetty-adapter "1.3.2"]
                  [enlive "1.1.5"]
