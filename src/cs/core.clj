@@ -42,10 +42,16 @@
     (re-find #"booksite" (:storeLink store)) (remove-unavailable (update (booksite/search store query)))
     :else                                    (remove-unavailable (update (site/search store query)))))
 
+;; DEPRECATED: API v1 resource
 (defresource indie [store query]
   :available-media-types ["application/json"]
   :allowed-methods [:get]
   :handle-ok (fn [_] (scrape store query)))
+
+(defresource indies [stores query]
+  :available-media-types ["application/json"]
+  :allowed-methods [:get]
+  :handle-ok (fn [_] (map #(scrape % query) stores)))
 
 (defroutes cs-routes
   "CityShelf routes."
@@ -78,7 +84,7 @@
        (let [latitude  (get params "latitude")
              longitude (get params "longitude")
              book      (get params "query")]
-         (map #(indie % (codec/url-encode book)) store-data)))
+         (indies store-data (codec/url-encode book))))
 
   ;; API routes.
   (apply routes
