@@ -4,6 +4,7 @@
   (:require [clojure.java.io :as io]
             [liberator.core :refer [resource defresource]]
             [ring.adapter.jetty :refer [run-jetty]]
+            [ring.middleware.cors :refer [wrap-cors]]
             [ring.util.codec :as codec]
             [ring.util.response :as resp]
             [compojure.core :refer [defroutes routes GET POST ANY]]
@@ -37,6 +38,7 @@
 (defn scrape
   "Generates a JSON payload from the scraped URL."
   [store query]
+  ;; TODO: Convert to a multimethod. (EW 16 May 2015)
   (cond
     (re-find #"mcnally"  (:storeLink store)) (remove-unavailable (update (solr/search store query)))
     (re-find #"booksite" (:storeLink store)) (remove-unavailable (update (booksite/search store query)))
@@ -86,7 +88,7 @@
              book      (get params "query")]
          (indies store-data (codec/url-encode book))))
 
-  ;; API routes.
+  ;; DEPRECATED: API v1 routes.
   (apply routes
     (pmap #(GET (str "/api/stores/" (:id %) "/")
                {params :query-params}
@@ -101,7 +103,9 @@
 
 (def handler
   "Handler helper function."
-  (compojure.handler/api cs-routes))
+  (compojure.handler/api
+    (wrap-cors cs-routes :access-control-allow-origin [#".*"]
+                         :access-control-allow-methods [:get])))
 
 (defn -main
   "Starts the web server."
