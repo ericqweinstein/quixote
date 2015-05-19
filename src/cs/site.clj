@@ -3,9 +3,8 @@
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
   cs.site
   (:require [clojure.string :as string]
+            [cs.utils :refer [fetch-url]]
             [net.cgrand.enlive-html :as html]))
-
-(declare fetch-url)
 
 (defn search
   "Generates a JSON payload from sites powered by Solr /search/site."
@@ -30,9 +29,3 @@
                         :availability %6
                         :isbn %7
                         }) title author price image link availability isbn)))
-
-;; TODO Extract this out into a helper. (EW 24 Apr 2015)
-(defn- fetch-url
-  "Creates an Enlive HTML resource from the provided URL string."
-  [url]
-  (html/html-resource (java.net.URL. url)))

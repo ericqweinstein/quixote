@@ -2,9 +2,10 @@
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
   cs.booksite
   (:require [clojure.string :as string]
+            [cs.utils :refer [fetch-url]]
             [net.cgrand.enlive-html :as html]))
 
-(declare fetch-url get-field)
+(declare get-field)
 
 (defn search
   "Generates a JSON payload from sites powered by BookSite."
@@ -30,9 +31,3 @@
   "Extracts the provided field from the provided URL."
   [field url]
   (pmap #(get-in % [:attrs :value]) (html/select url [:form (html/attr= :name field)])))
-
-;; TODO Extract this out into a helper. (EW 24 Apr 2015)
-(defn- fetch-url
-  "Creates an Enlive HTML resource from the provided URL string."
-  [url]
-  (html/html-resource (java.net.URL. url)))
