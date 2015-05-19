@@ -9,6 +9,9 @@
 (declare get-field)
 
 (defmulti search
+  "Generates a JSON payload from scraped sites,
+  dispatching on the underlying search engine
+  (e.g. /search/site/, /apachesolr_search/)."
   (fn [store query] (:type store)))
 
 (defmethod search :site [store query]
