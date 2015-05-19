@@ -7,9 +7,9 @@
 
 (facts "About location"
        (fact "It knows which cities are nearest")
-       (nearest 40.7 74.1) => :nyc
-       (nearest 42.1 118.0) => :pdx
-       (nearest 47.6 122.9) => :sea)
+       (nearest 40.7 -74.1) => :nyc
+       (nearest 42.1 -118.0) => :pdx
+       (nearest 47.6 -122.9) => :sea)
 
 (facts "About distance"
        (fact "It correctly computes Euclidean distance")

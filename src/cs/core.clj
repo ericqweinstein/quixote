@@ -40,7 +40,7 @@
   [store query]
   ;; TODO: Convert to a multimethod. (EW 16 May 2015)
   (cond
-    (re-find #"mcnally"  (:storeLink store)) (remove-unavailable (update (solr/search store query)))
+    (re-find #"mcnally|citylit"  (:storeLink store)) (remove-unavailable (update (solr/search store query)))
     (re-find #"booksite" (:storeLink store)) (remove-unavailable (update (booksite/search store query)))
     :else                                    (remove-unavailable (update (site/search store query)))))
 
@@ -50,10 +50,15 @@
   :allowed-methods [:get]
   :handle-ok (fn [_] (scrape store query)))
 
-(defresource indies [stores query]
+(defresource indies [stores query latitude longitude]
   :available-media-types ["application/json"]
   :allowed-methods [:get]
-  :handle-ok (fn [_] (map #(scrape % query) stores)))
+  :handle-ok (fn [_]
+               (let [city (location/nearest
+                           (Float/parseFloat latitude)
+                           (Float/parseFloat longitude))]
+                 (map #(scrape % query)
+                      (filter #(= city (:city %)) stores)))))
 
 (defroutes cs-routes
   "CityShelf routes."
@@ -86,7 +91,9 @@
        (let [latitude  (get params "latitude")
              longitude (get params "longitude")
              book      (get params "query")]
-         (indies store-data (codec/url-encode book))))
+         (indies store-data (codec/url-encode book)
+                            (codec/url-encode latitude)
+                            (codec/url-encode longitude))))
 
   ;; DEPRECATED: API v1 routes.
   (apply routes
