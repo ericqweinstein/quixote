@@ -13,12 +13,11 @@
             [clj-http.client :as client]
             [cheshire.core :as json]
             [cs.location :as location]
-            [cs.solr :as solr]
             [cs.site :as site]
-            [cs.booksite :as booksite]
             [cs.filter :refer [update remove-unavailable]]
             [cs.views.index :as home]))
 
+;; DEPRECATED: To be moved to separate client codebase.
 (defn mobile?
   "Determines whether a client is using a mobile device."
   [user-agent]
@@ -38,13 +37,9 @@
 (defn scrape
   "Generates a JSON payload from the scraped URL."
   [store query]
-  ;; TODO: Convert to a multimethod. (EW 16 May 2015)
-  (cond
-    (re-find #"mcnally|citylit"  (:storeLink store)) (remove-unavailable (update (solr/search store query)))
-    (re-find #"booksite" (:storeLink store)) (remove-unavailable (update (booksite/search store query)))
-    :else                                    (remove-unavailable (update (site/search store query)))))
+  (remove-unavailable (update (site/search store query))))
 
-;; DEPRECATED: API v1 resource
+;; DEPRECATED: API v1 resource.
 (defresource indie [store query]
   :available-media-types ["application/json"]
   :allowed-methods [:get]
@@ -62,9 +57,10 @@
 
 (defroutes cs-routes
   "CityShelf routes."
-  ;; Static assets.
+  ;; DEPRECATED: To be moved to separate client codebase.
   (route/files "/" {:root "resources/public"})
 
+  ;; DEPRECATED: To be moved to separate client codebase.
   (GET "/"
     {:keys [headers params body] :as request}
     (if (mobile? (get headers "user-agent"))
@@ -76,6 +72,7 @@
   ;; Handles subscribing users to the e-mail list via MailChimp.
   ;; When we separate the API, landing page, and mobile website,
   ;; this route will be moved to the landing page app. (EW 26 Apr 2015)
+  ;; DEPRECATED: To be moved to separate client codebase.
   (POST "/subscribe"
     {:keys [headers params body] :as request}
      (let [api-req {:apikey "49f5b85310aff273db3b5a8bf497b524-us9"
@@ -106,6 +103,7 @@
   ;; gets to Clojure, it's a legitimate route that Angular
   ;; should handle, but Clojure received (e.g. as a result
   ;; of a page refresh).
+  ;; DEPRECATED: To be moved to separate client codebase.
   (route/not-found (home/index "CityShelf")))
 
 (def handler
