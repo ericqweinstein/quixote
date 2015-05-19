@@ -1,7 +1,9 @@
 Quixote
 =======
 
-<img src='http://upload.wikimedia.org/wikipedia/en/5/5f/Donquixote.JPG' width='300' style='display:block;margin:0 auto;'>
+<p align='center'>
+  <img src='http://upload.wikimedia.org/wikipedia/en/5/5f/Donquixote.JPG' width='300' />
+</p>
 
 ## About
 Quixote is the search service that powers [CityShelf](http://www.cityshelf.com/), a web application that makes searching for books through local and independent booksellers quick and easy.
