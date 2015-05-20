@@ -45,6 +45,15 @@
   :allowed-methods [:get]
   :handle-ok (fn [_] (scrape store query)))
 
+(defresource stores [latitude longitude]
+  :available-media-types ["application/json"]
+  :allowed-methods [:get]
+  :handle-ok (fn [_]
+               (let [city (location/nearest
+                           (Float/parseFloat latitude)
+                           (Float/parseFloat longitude))]
+                 (filter #(= city (:city %)) store-data))))
+
 (defresource indies [stores query latitude longitude]
   :available-media-types ["application/json"]
   :allowed-methods [:get]
@@ -91,6 +100,12 @@
          (indies store-data (codec/url-encode book)
                             (codec/url-encode latitude)
                             (codec/url-encode longitude))))
+  (GET "/stores/"
+       {params :query-params}
+       (let [latitude  (get params "latitude")
+             longitude (get params "longitude")]
+         (stores (codec/url-encode latitude)
+                 (codec/url-encode longitude))))
 
   ;; DEPRECATED: API v1 routes.
   (apply routes
