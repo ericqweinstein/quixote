@@ -29,6 +29,7 @@ Content-Type for all requests/responses is application/JSON.
 | Method  | Path                 | Response                   |
 | ------- | -------------------- | -------------------------- |
 | GET     | /books/?field=value  | Books where field = value  |
+| GET     | /stores/?field=value | Stores where field = value |
 
 For example,
 
@@ -36,7 +37,13 @@ For example,
 λ curl http://localhost:8080/books/?query=Omon+Ra&latitude=40.805135&longitude=-73.964991
 ```
 
-will return a JSON representation of all books matching the query "Omon Ra" from independent bookstores in New York City.
+will return a JSON representation of all books matching the query "Omon Ra" from independent bookstores in New York City, and
+
+```bash
+λ curl http://localhost:8080/stores/?latitude=40.805135&longitude=-73.964991
+```
+
+will return a JSON representation of bookstores near 40.805135˚N 73.964991˚W.
 
 Version 1 endpoints were designed for New York City; version 2 endpoints enable search across the country. We currently support Boston, Chicago, Minneapolis, New York, Portland, and Seattle.
 
