@@ -74,7 +74,7 @@
   :map {:center {:latitude 42.366121 :longitude -71.105278} :zoom 14}
   :phone "tel+1-617-547-3721"
   :storeLink "http://www.pandemoniumbooks.com"
-  :storeName "Panemonium Books and Games"}
+  :storeName "Pandemonium Books and Games"}
  {:id 11
   :city :bos
   :type :site
