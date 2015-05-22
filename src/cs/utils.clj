@@ -38,4 +38,3 @@
   [coll]
   (vec (map #(apply hash-map %)
             (partition 6 (flatten coll)))))
-
