@@ -9,42 +9,42 @@
   [
    {:isbn "978000000001"
     :availability {
-                   :store "A"
+                   :store 0
                    :available true
                    :price 11.99
                    }
     }
    {:isbn "978000000002"
     :availability {
-                   :store "A"
+                   :store 0
                    :available true
                    :price 11.99
                    }
     }
    {:isbn "978000000003"
     :availability {
-                   :store "A"
+                   :store 0
                    :available true
                    :price 11.99
                    }
     }
    {:isbn "978000000001"
     :availability {
-                   :store "B"
+                   :store 1
                    :available true
                    :price 10.99
                    }
     }
    {:isbn "978000000002"
     :availability {
-                   :store "B"
+                   :store 1
                    :available true
                    :price 12.99
                    }
     }
    {:isbn "978000000003"
     :availability {
-                   :store "B"
+                   :store 1
                    :available true
                    :price 13.99
                    }
@@ -56,11 +56,11 @@
        (fact "It converts data from search results
              to books with availability fields")
        (pivot fixture-data) => {"978000000001"
-                                [{:available true, :price 11.99, :store "A"}
-                                 {:available true, :price 10.99, :store "B"}],
+                                [{:available true, :price 11.99, :store 0}
+                                 {:available true, :price 10.99, :store 1}],
                                 "978000000002"
-                                [{:available true, :price 11.99, :store "A"}
-                                 {:available true, :price 12.99, :store "B"}],
+                                [{:available true, :price 11.99, :store 0}
+                                 {:available true, :price 12.99, :store 1}],
                                 "978000000003"
-                                [{:available true, :price 11.99, :store "A"}
-                                 {:available true, :price 13.99, :store "B"}]})
+                                [{:available true, :price 11.99, :store 0}
+                                 {:available true, :price 13.99, :store 1}]})
