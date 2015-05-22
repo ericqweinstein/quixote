@@ -12,9 +12,10 @@
             [compojure.handler]
             [clj-http.client :as client]
             [cheshire.core :as json]
+            [cs.filter :refer [remove-unavailable update]]
             [cs.location :as location]
             [cs.site :as site]
-            [cs.filter :refer [update remove-unavailable]]
+            [cs.utils :refer [pivot]]
             [cs.views.index :as home]))
 
 ;; DEPRECATED: To be moved to separate client codebase.
@@ -34,6 +35,12 @@
   "Store data."
   (config "conf.clj"))
 
+(defn new-scrape
+  "Generates a JSON payload from the scraped URL."
+  [store query]
+  (site/search store query))
+
+;; DEPRECATED: API v1 method.
 (defn scrape
   "Generates a JSON payload from the scraped URL."
   [store query]
@@ -61,8 +68,8 @@
                (let [city (location/nearest
                            (Float/parseFloat latitude)
                            (Float/parseFloat longitude))]
-                 (map #(scrape % query)
-                      (filter #(= city (:city %)) stores)))))
+                 (pivot (first (map #(new-scrape % query)
+                   (filter #(= city (:city %)) stores)))))))
 
 (defroutes cs-routes
   "CityShelf routes."

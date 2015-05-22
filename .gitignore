@@ -21,3 +21,6 @@ pom.xml.asc
 
 # JavaScripts
 node_modules/
+
+# Logs
+newrelic/logs

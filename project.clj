@@ -1,7 +1,7 @@
-(defproject cityshelf "0.1.0"
-  :description "CityShelf: A search aggregator for independent bookstores."
-  :url "http://www.cityshelf.com"
-  :dependencies [[org.clojure/clojure "1.5.1"]
+(defproject quixote "1.0.0"
+  :description "Quixote: the search service for http://www.cityshelf.com/"
+  :url "https://github.com/ericqweinstein/quixote"
+  :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/math.numeric-tower "0.0.4"]
                  [liberator "0.13"]
                  [compojure "1.3.4"]
@@ -20,7 +20,8 @@
                              [lein-ancient "0.5.5"]
                              [lein-kibit "0.0.8"]
                              [lein-bikeshed "0.1.8"]]
-                   :dependencies [[midje "1.6.3"]]}
+                   :dependencies [[midje "1.6.3"]]
+                   :jvm-opts ["-Dnewrelic.environment=development"]}
              :uberjar {:aot :all}}
   :aliases {"lint" ^{:doc "Lint and test all the things"}
             ["do" "ancient," "kibit," ["bikeshed", "-m135", "-v"]]}

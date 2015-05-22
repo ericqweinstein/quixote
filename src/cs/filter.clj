@@ -5,6 +5,11 @@
 
 (declare available? normalize)
 
+(defn has?
+  "Checks whether a particular store has the given book in stock."
+  [availability-text]
+  (not= (normalize availability-text) "Unavailable"))
+
 (defn update
   "Updates book availability metadata with normalized text."
   [store-data]
