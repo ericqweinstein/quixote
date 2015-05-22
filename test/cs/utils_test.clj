@@ -8,45 +8,63 @@
 (def fixture-data
   [
    {:isbn "978000000001"
-    :availability {
-                   :store 0
-                   :available true
-                   :price 11.99
+    :search-result {
+                    :title "Book A"
+                    :author "Author A"
+                    :img "http://www.example.com/A"
+                    :store 0
+                    :available true
+                    :price 11.99
                    }
     }
    {:isbn "978000000002"
-    :availability {
-                   :store 0
-                   :available true
-                   :price 11.99
+    :search-result {
+                    :title "Book B"
+                    :author "Author B"
+                    :img "http://www.example.com/B"
+                    :store 0
+                    :available false
+                    :price 11.99
                    }
     }
    {:isbn "978000000003"
-    :availability {
-                   :store 0
-                   :available true
-                   :price 11.99
+    :search-result {
+                    :title "Book C"
+                    :author "Author C"
+                    :img "http://www.example.com/C"
+                    :store 0
+                    :available true
+                    :price 11.99
                    }
     }
    {:isbn "978000000001"
-    :availability {
-                   :store 1
-                   :available true
-                   :price 10.99
+    :search-result {
+                    :title "Book A"
+                    :author "Author A"
+                    :img "http://www.example.com/A"
+                    :store 1
+                    :available false
+                    :price 10.99
                    }
     }
    {:isbn "978000000002"
-    :availability {
-                   :store 1
-                   :available true
-                   :price 12.99
+    :search-result {
+                    :title "Book B"
+                    :author "Author B"
+                    :img "http://www.example.com/B"
+                    :store 1
+                    :available true
+                    :price 12.99
                    }
     }
    {:isbn "978000000003"
-    :availability {
-                   :store 1
-                   :available true
-                   :price 13.99
+    :search-result {
+                    :title "Book C"
+                    :author "Author C"
+                    :img "http://www.example.com/C"
+                    :store 1
+                    :available false
+                    :price 13.99
                    }
     }
   ]
@@ -54,13 +72,31 @@
 
 (facts "About manipulating book data"
        (fact "It converts data from search results
-             to books with availability fields")
+             to books with search result fields")
        (pivot fixture-data) => {"978000000001"
-                                [{:available true, :price 11.99, :store 0}
-                                 {:available true, :price 10.99, :store 1}],
+                                [{:author "Author A"
+                                  :available true
+                                  :img "http://www.example.com/A"
+                                  :price 11.99 :store 0 :title "Book A"}
+                                 {:author "Author A"
+                                  :available false
+                                  :img "http://www.example.com/A"
+                                  :price 10.99 :store 1 :title "Book A"}]
                                 "978000000002"
-                                [{:available true, :price 11.99, :store 0}
-                                 {:available true, :price 12.99, :store 1}],
+                                [{:author "Author B"
+                                  :available false
+                                  :img "http://www.example.com/B"
+                                  :price 11.99 :store 0 :title "Book B"}
+                                 {:author "Author B"
+                                  :available true
+                                  :img "http://www.example.com/B"
+                                  :price 12.99 :store 1 :title "Book B"}]
                                 "978000000003"
-                                [{:available true, :price 11.99, :store 0}
-                                 {:available true, :price 13.99, :store 1}]})
+                                [{:author "Author C"
+                                  :available true
+                                  :img "http://www.example.com/C"
+                                  :price 11.99 :store 0 :title "Book C"}
+                                 {:author "Author C"
+                                  :available false
+                                  :img "http://www.example.com/C"
+                                  :price 13.99 :store 1 :title "Book C"}]})

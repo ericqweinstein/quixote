@@ -37,4 +37,4 @@
                                  {:a quux :b do :c re}]"
   [coll]
   (vec (map #(apply hash-map %)
-            (partition 6 (flatten coll)))))
+            (partition 12 (flatten coll)))))
