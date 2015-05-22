@@ -17,7 +17,7 @@
   [d]
   (update-values
     (apply merge-with concat
-      (into [] (map #(apply hash-map %) (map reverse (map vals d)))))
+      (vec (map #(apply hash-map %) (map reverse (map vals d)))))
     mapify))
 
 (defn- update-values
@@ -36,7 +36,6 @@
   into a vector of maps of form [{:a foo :b bar :c baz}
                                  {:a quux :b do :c re}]"
   [coll]
-  (into []
-        (map #(apply hash-map %)
-             (partition 6 (flatten coll)))))
+  (vec (map #(apply hash-map %)
+            (partition 6 (flatten coll)))))
 
