@@ -5,60 +5,12 @@
 
 (declare mapify update-values)
 
-;; TODO: Remove as soon as testing is complete. (EW 21 May 2015)
-(def data
-  [
-   {:isbn "978000000001"
-    :availability {
-                   :store "A"
-                   :available true
-                   :price 11.99
-                   }
-    }
-   {:isbn "978000000002"
-    :availability {
-                   :store "A"
-                   :available true
-                   :price 11.99
-                   }
-    }
-   {:isbn "978000000003"
-    :availability {
-                   :store "A"
-                   :available true
-                   :price 11.99
-                   }
-    }
-   {:isbn "978000000001"
-    :availability {
-                   :store "B"
-                   :available true
-                   :price 10.99
-                   }
-    }
-   {:isbn "978000000002"
-    :availability {
-                   :store "B"
-                   :available true
-                   :price 12.99
-                   }
-    }
-   {:isbn "978000000003"
-    :availability {
-                   :store "B"
-                   :available true
-                   :price 13.99
-                   }
-    }
-  ]
-)
-
 (defn fetch-url
   "Creates an Enlive HTML resource from the provided URL string."
   [url]
   (html/html-resource (java.net.URL. url)))
 
-(defn munge!
+(defn pivot
   "Converts a list of search results into a de-duped list
   of books with the availability at each store as a field
   on each book."
