@@ -67,9 +67,10 @@
   :handle-ok (fn [_]
                (let [city (location/nearest
                            (Float/parseFloat latitude)
-                           (Float/parseFloat longitude))]
-                 (pivot (first (map #(new-scrape % query)
-                   (filter #(= city (:city %)) stores)))))))
+                           (Float/parseFloat longitude))
+                     data (flatten (map #(new-scrape % query)
+                            (filter #(= city (:city %)) stores)))]
+                 (pivot data))))
 
 (defroutes cs-routes
   "CityShelf routes."
