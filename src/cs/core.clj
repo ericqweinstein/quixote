@@ -14,6 +14,7 @@
             [cheshire.core :as json]
             [cs.filter :refer [remove-unavailable update]]
             [cs.location :as location]
+            [cs.old-site :as old-site]
             [cs.site :as site]
             [cs.utils :refer [pivot]]
             [cs.views.index :as home]))
@@ -44,7 +45,7 @@
 (defn scrape
   "Generates a JSON payload from the scraped URL."
   [store query]
-  (remove-unavailable (update (site/search store query))))
+  (remove-unavailable (update (old-site/search store query))))
 
 ;; DEPRECATED: API v1 resource.
 (defresource indie [store query]
@@ -67,12 +68,10 @@
   :handle-ok (fn [_]
                (let [city (location/nearest
                            (Float/parseFloat latitude)
-                           (Float/parseFloat longitude))]
-                 (map #(scrape % query)
-                   (filter #(= city (:city %)) stores)))))
-;                      data (flatten (map #(new-scrape % query)
-;                             (filter #(= city (:city %)) stores)))]
-;                  (pivot data))))
+                           (Float/parseFloat longitude))
+                     data (flatten (map #(new-scrape % query)
+                            (filter #(= city (:city %)) stores)))]
+                  (pivot data))))
 
 (defroutes cs-routes
   "CityShelf routes."

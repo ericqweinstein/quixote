@@ -1,7 +1,7 @@
 (ns ^{:doc "Tools for scraping different types
            of independent bookstore websites."
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
-  cs.site
+  cs.old-site
   (:require [clojure.string :as string]
             [cs.filter :refer [has?]]
             [cs.utils :refer [fetch-url]]
@@ -29,7 +29,8 @@
                            (filter #(re-find #"ISBN-13: ([0-9 ]+)" %)
                                    (map html/text (html/select url [:.abaproduct-details :span]))))]
 
-    (structure store isbn title author image availability price)))
+
+    (structure store isbn title author price image link availability)))
 
 (defmethod search :solr [store query]
   (let [url (fetch-url (str (:storeLink store) "/search/apachesolr_search/" query))
@@ -43,7 +44,8 @@
         isbn         (pmap #(string/trim (second (re-find #"ISBN-13: ([0-9 ]+)" %)))
                            (map html/text (html/select url [:.abaproduct-more-details])))]
 
-    (structure store isbn title author image availability price)))
+
+    (structure store isbn title author price image link availability)))
 
 (defmethod search :booksite [store query]
   (let [url (fetch-url (str (:storeLink store) "/search/?q=" query))
@@ -55,7 +57,7 @@
         availability (pmap html/text (html/select url [[:td (html/attr= :width "81")] :strong :font]))
         isbn         (get-field "sku" url)]
 
-    (structure store isbn title author image availability price)))
+    (structure store isbn title author price image link availability)))
 
 (defn- get-field
   "Extracts the provided field from the provided URL."
@@ -63,15 +65,12 @@
   (pmap #(get-in % [:attrs :value]) (html/select url [:form (html/attr= :name field)])))
 
 (defn- structure
-  "Structures the scraped data into a usable map."
-  [store isbn title author image availability price]
-  (map #(merge (sorted-map) {:isbn %1
-                             :search-result {
-                                             :title %2
-                                             :author %3
-                                             :img %4
-                                             :store (:id store)
-                                             :available (has? %5)
-                                             :price %6
-                                            }
-                   }) isbn title author image availability price))
+  "Old API."
+  [store isbn title author price image link availability]
+  (map #(merge store {:title %1
+                      :author %2
+                      :price %3
+                      :img %4
+                      :bookLink %5
+                      :availability %6
+                      :isbn %7}) title author price image link availability isbn))
