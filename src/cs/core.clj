@@ -71,7 +71,7 @@
                            (Float/parseFloat longitude))
                      data (flatten (map #(new-scrape % query)
                             (filter #(= city (:city %)) stores)))]
-                  (pivot data))))
+                  (vector (pivot data)))))
 
 (defroutes cs-routes
   "CityShelf routes."

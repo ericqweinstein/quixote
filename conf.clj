@@ -43,7 +43,7 @@
  {:id 6
   :city :nyc
   :type :site
-  :map {:center {:latitude 40.729921 :longitude -73.989448} :zoom 14}
+  :map {:center {:latitude 40.724005 :longitude -73.985879} :zoom 14}
   :phone "tel:+1-212-260-7853"
   :storeLink "http://www.stmarksbookshop.com"
   :storeName "St. Mark's Bookshop"}
