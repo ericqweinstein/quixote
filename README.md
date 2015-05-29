@@ -48,7 +48,9 @@ will return a JSON representation of bookstores near 40.805135˚N 73.964991˚W.
 Version 1 endpoints were designed for New York City; version 2 endpoints enable search across the country. We currently support Boston, Chicago, Minneapolis, New York, Portland, and Seattle.
 
 ## Running Locally
-CityShelf is currently an Angular SPA with a Clojure API (generated via [Enlive](https://github.com/cgrand/enlive), [Liberator](http://clojure-liberator.github.io/liberator/), and [Compojure](https://github.com/weavejester/compojure)). You'll need the following:
+CityShelf is currently an Angular SPA with a Clojure API (generated via [Enlive](https://github.com/cgrand/enlive), [Liberator](http://clojure-liberator.github.io/liberator/), and [Compojure](https://github.com/weavejester/compojure)). We're currently migrating to an isomorphic Clojure(Script) stack, at which point this repo will only contain the Quixote Clojure service and the [Cityshelf repository](https://github.com/ericqweinstein/cityshelf) will contain the client.
+
+For now, you'll need the following:
 
 ### Client Application
 * NodeJS + NPM (Node Package Manager)
