@@ -5,7 +5,7 @@
                  [org.clojure/math.numeric-tower "0.0.4"]
                  [liberator "0.13"]
                  [compojure "1.3.4"]
-                 [cheshire "5.4.0"]
+                 [cheshire "5.5.0"]
                  [clj-http "1.1.2"]
                  [ring/ring-core "1.3.2"]
                  [ring/ring-jetty-adapter "1.3.2"]
