@@ -59,6 +59,18 @@
 
     (structure store isbn title author price image link availability)))
 
+(defmethod search :powells [store query]
+  (let [url (fetch-url (str (:storeLink store) "/s?kw=" query "&class="))
+        title        (pmap html/text (html/select url [:.book-title]))
+        author       (pmap html/text (html/select url [:.book-info :cite]))
+        price        (pmap #(re-find (re-pattern "\\d+\\.\\d{2}") %) (map html/text (html/select url [:.price])))
+        image        (pmap #(get-in % [:attrs :src]) (html/select url [:.bookcover]))
+        link         (pmap #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.book-title :a])))
+        availability (pmap #(get-in % [:attrs :src]) (html/select url [:.add-to-cart-button]))
+        isbn         (pmap #(re-find (re-pattern "\\d{13}") %) image)]
+
+    (structure store isbn title author price image link availability)))
+
 (defn- get-field
   "Extracts the provided field from the provided URL."
   [field url]

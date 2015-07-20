@@ -161,11 +161,11 @@
   :storeName "Broadway Books"}
  {:id 23
   :city :pdx
-  :type :solr
-  :map {:center {:latitude 45.590163 :longitude -122.754632} :zoom 14}
-  :phone "tel:+1-503-283-0032"
-  :storeLink "http://stjohnsbooks.com"
-  :storeName "St. Johns Booksellers"}
+  :type :powells
+  :map {:center {:latitude 45.523377 :longitude -122.681319} :zoom 14}
+  :phone "tel:+1-503-228-4651"
+  :storeLink "http://www.powells.com/"
+  :storeName "Powell's Books"}
  {:id 24
   :city :sea
   :type :site

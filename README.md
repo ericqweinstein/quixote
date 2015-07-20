@@ -57,7 +57,7 @@ For now, you'll need the following:
 * Grunt (`λ npm install`)
 
 ### API
-* Clojure 1.5+
+* Clojure 1.6+
 * Leiningen 2
 
 ## Installation

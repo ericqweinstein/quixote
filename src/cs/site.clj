@@ -45,6 +45,8 @@
 
     (structure store isbn title author image availability price)))
 
+;; I honestly don't remember why we included this one. I think we
+;; wanted to prove we could handle special snowflakes. (EQW 19 Jul 2015)
 (defmethod search :booksite [store query]
   (let [url (fetch-url (str (:storeLink store) "/search/?q=" query))
         title        (get-field "bookname" url)
@@ -54,6 +56,20 @@
         link         (pmap #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:td :a])))
         availability (pmap html/text (html/select url [[:td (html/attr= :width "81")] :strong :font]))
         isbn         (get-field "sku" url)]
+
+    (structure store isbn title author image availability price)))
+
+;; Powell's Books doesn't use one of the ABA's shared solutions,
+;; but they're important, so we accommodate them. (EQW 19 Jul 2015)
+(defmethod search :powells [store query]
+  (let [url (fetch-url (str (:storeLink store) "/s?kw=" query "&class="))
+        title        (pmap html/text (html/select url [:.book-title]))
+        author       (pmap html/text (html/select url [:.book-info :cite]))
+        price        (pmap #(re-find (re-pattern "\\d+\\.\\d{2}") %) (map html/text (html/select url [:.price])))
+        image        (pmap #(get-in % [:attrs :src]) (html/select url [:.bookcover]))
+        link         (pmap #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.book-title :a])))
+        availability (pmap #(get-in % [:attrs :src]) (html/select url [:.add-to-cart-button]))
+        isbn         (pmap #(re-find (re-pattern "\\d{13}") %) image)]
 
     (structure store isbn title author image availability price)))
 
