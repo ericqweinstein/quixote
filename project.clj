@@ -20,10 +20,13 @@
                              [lein-ancient "0.5.5"]
                              [lein-kibit "0.0.8"]
                              [lein-bikeshed "0.1.8"]]
-                   :dependencies [[midje "1.6.3"]]
-                   :jvm-opts ["-Dnewrelic.environment=development"]}
+                   :dependencies [[midje "1.6.3"]]}
+                   ;; TODO Reenable after I figure out the R10 boot
+                   ;; timeout issue. (EQW 20 Jul 2015)
+                   ;; :jvm-opts ["-Dnewrelic.environment=development"]}
              :uberjar {:aot :all}}
   :aliases {"lint" ^{:doc "Lint and test all the things"}
             ["do" "ancient," "kibit," ["bikeshed", "-m135", "-v"]]}
-  :min-lein-version "2.0.0"
-  :java-agents [[com.newrelic.agent.java/newrelic-agent "3.11.0"]])
+  :min-lein-version "2.0.0")
+  ;; TODO See above comment. (EQW 20 Jul 2015)
+  ;; :java-agents [[com.newrelic.agent.java/newrelic-agent "3.11.0"]])
