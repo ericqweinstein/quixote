@@ -19,9 +19,9 @@
    (#'quixote.filter/normalize "Not Currently In Stock") => "Unavailable"
 
   (fact "It updates book availability")
-    (update [{:title "Hamlet" :availability "On Our Shelves Now"}]) => [{:title "Hamlet" :availability "On shelves now"}]
-    (update [{:title "Omon Ra" :availability "In the Warehouse Now"}]) => [{:title "Omon Ra" :availability "Out of stock"}]
-    (update [{:title "Ulysses" :availability "Not on hand"}]) => [{:title "Ulysses" :availability "Unavailable"}]
+    (update-metadata [{:title "Hamlet" :availability "On Our Shelves Now"}]) => [{:title "Hamlet" :availability "On shelves now"}]
+    (update-metadata [{:title "Omon Ra" :availability "In the Warehouse Now"}]) => [{:title "Omon Ra" :availability "Out of stock"}]
+    (update-metadata [{:title "Ulysses" :availability "Not on hand"}]) => [{:title "Ulysses" :availability "Unavailable"}]
 
   (fact "It removes search results when the book is unavailable")
     (let [test-data [{:title "Mother Night" :availability "Unavailable"}

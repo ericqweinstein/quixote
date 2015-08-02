@@ -10,7 +10,7 @@
   [availability-text]
   (not= (normalize availability-text) "Unavailable"))
 
-(defn update
+(defn update-metadata
   "Updates book availability metadata with normalized text."
   [store-data]
   (map #(update-in % [:availability] normalize) store-data))

@@ -12,7 +12,7 @@
             [compojure.handler]
             [clj-http.client :as client]
             [cheshire.core :as json]
-            [quixote.filter :refer [remove-unavailable update]]
+            [quixote.filter :refer [remove-unavailable update-metadata]]
             [quixote.location :as location]
             [quixote.old-site :as old-site]
             [quixote.site :as site]
@@ -45,7 +45,7 @@
 (defn scrape
   "Generates a JSON payload from the scraped URL."
   [store query]
-  (remove-unavailable (update (old-site/search store query))))
+  (remove-unavailable (update-metadata (old-site/search store query))))
 
 ;; DEPRECATED: API v1 resource.
 (defresource indie [store query]
