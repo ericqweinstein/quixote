@@ -12,19 +12,9 @@
             [compojure.handler]
             [clj-http.client :as client]
             [cheshire.core :as json]
-            [quixote.filter :refer [remove-unavailable update-metadata]]
             [quixote.location :as location]
-            [quixote.old-site :as old-site]
             [quixote.site :as site]
-            [quixote.utils :refer [pivot]]
-            [quixote.views.index :as home]))
-
-;; DEPRECATED: To be moved to separate client codebase.
-(defn mobile?
-  "Determines whether a client is using a mobile device."
-  [user-agent]
-  (when (seq user-agent)
-    (re-find #"(iPhone|iPod|Android|BlackBerry|Windows Phone)" user-agent)))
+            [quixote.utils :refer [pivot]]))
 
 (defn config
   "Loads the configuration file."
@@ -34,24 +24,16 @@
 
 (def store-data
   "Store data."
-  (config "conf.clj"))
+  (config "config/stores.clj"))
 
-(defn new-scrape
-  "Generates a JSON payload from the scraped URL."
-  [store query]
-  (site/search store query))
+(def service-data
+  "Service data."
+  (config "config/service.clj"))
 
-;; DEPRECATED: API v1 method.
 (defn scrape
   "Generates a JSON payload from the scraped URL."
   [store query]
-  (remove-unavailable (update-metadata (old-site/search store query))))
-
-;; DEPRECATED: API v1 resource.
-(defresource indie [store query]
-  :available-media-types ["application/json"]
-  :allowed-methods [:get]
-  :handle-ok (fn [_] (scrape store query)))
+  (site/search store query))
 
 (defresource stores [latitude longitude]
   :available-media-types ["application/json"]
@@ -69,37 +51,18 @@
                (let [city (location/nearest
                            (Float/parseFloat latitude)
                            (Float/parseFloat longitude))
-                     data (flatten (map #(new-scrape % query)
+                     data (flatten (map #(scrape % query)
                             (filter #(= city (:city %)) stores)))]
                   (vector (pivot data)))))
 
 (defroutes quixote-routes
   "Quixote routes."
-  ;; DEPRECATED: To be moved to separate client codebase.
-  (route/files "/" {:root "resources/public"})
 
-  ;; DEPRECATED: To be moved to separate client codebase.
   (GET "/"
-    {:keys [headers params body] :as request}
-    (if (mobile? (get headers "user-agent"))
-      ;; The mobile web application...
-      (home/index "CityShelf")
-      ;;... or the landing page for non-mobile devices.
-      (resp/file-response "landing.html" {:root "resources/public"})))
-
-  ;; Handles subscribing users to the e-mail list via MailChimp.
-  ;; When we separate the API, landing page, and mobile website,
-  ;; this route will be moved to the landing page app. (EW 26 Apr 2015)
-  ;; DEPRECATED: To be moved to separate client codebase.
-  (POST "/subscribe"
-    {:keys [headers params body] :as request}
-     (let [api-req {:apikey "49f5b85310aff273db3b5a8bf497b524-us9"
-                    :id "c2f178f901"
-                    :email {:email (:email params)}}
-           api-rsp (client/post "https://us9.api.mailchimp.com/2.0/lists/subscribe.json"
-                                {:body (json/generate-string api-req)
-                                 :content-type :json
-                                 :accept :json})]))
+    []
+    {:status 200
+     :headers {"Content-Type" "application/json"}
+     :body (json/generate-string service-data)})
 
   (GET "/books/"
     {params :query-params}
@@ -109,6 +72,7 @@
          (indies store-data (codec/url-encode book)
                             (codec/url-encode latitude)
                             (codec/url-encode longitude))))
+
   (GET "/stores/"
        {params :query-params}
        (let [latitude  (get params "latitude")
@@ -116,19 +80,9 @@
          (stores (codec/url-encode latitude)
                  (codec/url-encode longitude))))
 
-  ;; DEPRECATED: API v1 routes.
-  (apply routes
-    (pmap #(GET (str "/api/stores/" (:id %) "/")
-               {params :query-params}
-               (indie % (codec/url-encode (get params "query"))))
-         store-data))
-
-  ;; Angular handles all routing, including 404s. If a 404
-  ;; gets to Clojure, it's a legitimate route that Angular
-  ;; should handle, but Clojure received (e.g. as a result
-  ;; of a page refresh).
-  ;; DEPRECATED: To be moved to separate client codebase.
-  (route/not-found (home/index "CityShelf")))
+  (route/not-found
+    {:status 404
+     :body "Not found"}))
 
 (def handler
   "Handler helper function."

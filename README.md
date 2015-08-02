@@ -8,22 +8,7 @@ Quixote
 ## About
 Quixote is the search service that powers [CityShelf](http://www.cityshelf.com/), a web application that makes searching for books through local and independent booksellers quick and easy.
 
-## API Version 1 Endpoints
-Content-Type for all requests/responses is application/JSON.
-
-| Method  | Path                          | Response                                     |
-| ------- | ----------------------------- | -------------------------------------------- |
-| GET     | /api/stores/:id/?field=value  | Books where store ID = id and field = value  |
-
-For example,
-
-```bash
-λ curl http://localhost:8080/api/stores/0/?query=Omon+Ra
-```
-
-will return a JSON representation of all books matching the query "Omon Ra" from Astoria Bookshop (ID #0).
-
-## API Version 2 Endpoints
+## API Endpoints
 Content-Type for all requests/responses is application/JSON.
 
 | Method  | Path                 | Response                   |
@@ -45,45 +30,35 @@ will return a JSON representation of all books matching the query "Omon Ra" from
 
 will return a JSON representation of bookstores near 40.805135˚N 73.964991˚W.
 
-Version 1 endpoints were designed for New York City; version 2 endpoints enable search across the country. We currently support Boston, Chicago, Minneapolis, New York, Portland, and Seattle.
+We currently support Boston, Chicago, Minneapolis, New York, Portland, and Seattle.
 
 ## Running Locally
-CityShelf is currently an Angular SPA with a Clojure API (generated via [Enlive](https://github.com/cgrand/enlive), [Liberator](http://clojure-liberator.github.io/liberator/), and [Compojure](https://github.com/weavejester/compojure)). We're currently migrating to an isomorphic Clojure(Script) stack, at which point this repo will only contain the Quixote Clojure service and the [Cityshelf repository](https://github.com/ericqweinstein/cityshelf) will contain the client.
+Quixote is a Clojure API (generated via [Enlive](https://github.com/cgrand/enlive), [Liberator](http://clojure-liberator.github.io/liberator/), and [Compojure](https://github.com/weavejester/compojure)). The overall CityShelf application is an isomorphic Clojure(Script) stack; the [Cityshelf repository](https://github.com/ericqweinstein/cityshelf) contains the ClojureScript web client. To run this service locally, you'll need:
 
-For now, you'll need the following:
-
-### Client Application
-* NodeJS + NPM (Node Package Manager)
-* Grunt (`λ npm install`)
-
-### API
-* Clojure 1.6+
+* Clojure 1.7
 * Leiningen 2
 
 ## Installation
-1. Clone the repository (`λ git clone git@github.com:ericqweinstein/cityshelf.git`)
-2. Install client dependencies (`λ npm install`)
-3. Install API dependencies (`λ lein deps`)
-4. Start the web server on port 8080 (`λ lein run`)
+1. Clone the repository (`λ git clone git@github.com:ericqweinstein/quixote.git`)
+2. Install dependencies (`λ lein deps`)
+3. Start the web server on port 8080 (`λ lein run`)
 
 ## Deploying
-CityShelf currently lives on Heroku at http://cityshelf.herokuapp.com/.
+Quixote currently lives on Heroku at http://brass-mammoth.herokuapp.com/.
 
-1. Lint/test the client application, build/minify CSS & JS, &c (`λ grunt`)
-2. Test the API (`λ lein midje`)
-3. Deploy (`λ git push heroku master`)
+1. Test (`λ lein midje`)
+2. Deploy (`λ git push heroku master`)
 
 ## Contributing
 1. Branch (`λ git checkout -b fancy-new-feature`)
 2. Commit (`λ git commit -m "Fanciness!"`)
-3. Lint and test the client (`λ grunt`)
-4. Lint the API (`λ lein lint`)
-5. Test the API (`λ lein midje`)
-6. Push (`λ git push origin fancy-new-feature`)
-7. Ye Olde Pulle Request
+3. Lint (`λ lein lint`)
+4. Test (`λ lein midje`)
+5. Push (`λ git push origin fancy-new-feature`)
+6. Ye Olde Pulle Request
 
 ## Miscellaneous
-You can generate documentation with `λ grunt jsdoc` (JavaScript) and `λ lein doc` (Clojure).
+You can generate documentation with `λ lein doc`.
 
 ## License
-Copyright © 2014 - 2015 CityShelf. All rights reserved.
+Copyright © 2015 CityShelf. All rights reserved.
