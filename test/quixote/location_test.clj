@@ -1,9 +1,9 @@
 (ns ^{:doc "Tests for location.clj"
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
-  cs.location-test
+  quixote.location-test
   (:require [clojure.test :refer :all]
             [midje.sweet :refer :all]
-            [cs.location :refer :all]))
+            [quixote.location :refer :all]))
 
 (facts "About location"
        (fact "It knows which cities are nearest")
@@ -13,4 +13,4 @@
 
 (facts "About distance"
        (fact "It correctly computes Euclidean distance")
-       (#'cs.location/distance 40 45 70 100) => 30.4138126514911)
+       (#'quixote.location/distance 40 45 70 100) => 30.4138126514911)

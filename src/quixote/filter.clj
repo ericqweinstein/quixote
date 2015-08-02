@@ -1,7 +1,7 @@
 (ns ^{:doc "Filters and normalizes book metadata
            returned from the various bookstores."
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
-  cs.filter)
+  quixote.filter)
 
 (declare available? normalize)
 

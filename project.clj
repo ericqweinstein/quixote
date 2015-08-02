@@ -12,7 +12,7 @@
                  [ring-cors "0.1.7"]
                  [enlive "1.1.5"]
                  [hiccup "1.0.5"]]
-  :main ^:skip-aot cs.core
+  :main ^:skip-aot quixote.core
   :target-path "target/%s"
   :profiles {:dev {
                    :plugins [[lein-midje "3.1.1"]

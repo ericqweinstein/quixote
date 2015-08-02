@@ -1,10 +1,10 @@
 (ns ^{:doc "Tools for scraping different types
            of independent bookstore websites."
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
-  cs.old-site
+  quixote.old-site
   (:require [clojure.string :as string]
-            [cs.filter :refer [has?]]
-            [cs.utils :refer [fetch-url]]
+            [quixote.filter :refer [has?]]
+            [quixote.utils :refer [fetch-url]]
             [net.cgrand.enlive-html :as html]))
 
 (declare get-field structure)

@@ -1,6 +1,6 @@
-(ns ^{:doc "CityShelf utility functions."
+(ns ^{:doc "Quixote utility functions."
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
-  cs.utils
+  quixote.utils
   (:require [net.cgrand.enlive-html :as html]))
 
 (declare mapify update-values)

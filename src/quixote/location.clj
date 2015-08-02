@@ -1,6 +1,6 @@
 (ns ^{:doc "Geolocation services."
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
-  cs.location
+  quixote.location
   (:require [clojure.math.numeric-tower :as math]))
 
 (declare square distance)

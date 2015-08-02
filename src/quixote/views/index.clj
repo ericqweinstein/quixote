@@ -1,6 +1,6 @@
 (ns ^{:doc "Provides the base CityShelf view."
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
-  cs.views.index
+  quixote.views.index
   (:use [hiccup.page :only (html5 include-css include-js)]
         [hiccup.element :only (javascript-tag)]))
 

@@ -1,9 +1,9 @@
 (ns ^{:doc "Tests for utils.clj"
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
-  cs.utils-test
+  quixote.utils-test
   (:require [clojure.test :refer :all]
             [midje.sweet :refer :all]
-            [cs.utils :refer :all]))
+            [quixote.utils :refer :all]))
 
 (def fixture-data
   [(sorted-map

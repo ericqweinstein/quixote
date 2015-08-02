@@ -1,9 +1,9 @@
-(ns ^{:doc "Tests for the core.clj"
+(ns ^{:doc "Tests for core.clj"
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
-  cs.core-test
+  quixote.core-test
   (:require [clojure.test :refer :all]
             [midje.sweet :refer :all]
-            [cs.core :refer :all]))
+            [quixote.core :refer :all]))
 
 (facts "About CityShelf"
  (fact "It detects mobile devices")

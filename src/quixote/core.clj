@@ -1,6 +1,6 @@
-(ns ^{:doc "CityShelf's web server."
+(ns ^{:doc "Quixote's web server."
       :author "Eric Weinstein <eric.q.weinstein@gmail.com>"}
-  cs.core
+  quixote.core
   (:require [clojure.java.io :as io]
             [liberator.core :refer [resource defresource]]
             [ring.adapter.jetty :refer [run-jetty]]
@@ -12,12 +12,12 @@
             [compojure.handler]
             [clj-http.client :as client]
             [cheshire.core :as json]
-            [cs.filter :refer [remove-unavailable update]]
-            [cs.location :as location]
-            [cs.old-site :as old-site]
-            [cs.site :as site]
-            [cs.utils :refer [pivot]]
-            [cs.views.index :as home]))
+            [quixote.filter :refer [remove-unavailable update]]
+            [quixote.location :as location]
+            [quixote.old-site :as old-site]
+            [quixote.site :as site]
+            [quixote.utils :refer [pivot]]
+            [quixote.views.index :as home]))
 
 ;; DEPRECATED: To be moved to separate client codebase.
 (defn mobile?
@@ -73,8 +73,8 @@
                             (filter #(= city (:city %)) stores)))]
                   (vector (pivot data)))))
 
-(defroutes cs-routes
-  "CityShelf routes."
+(defroutes quixote-routes
+  "Quixote routes."
   ;; DEPRECATED: To be moved to separate client codebase.
   (route/files "/" {:root "resources/public"})
 
@@ -133,8 +133,8 @@
 (def handler
   "Handler helper function."
   (compojure.handler/api
-    (wrap-cors cs-routes :access-control-allow-origin [#".*"]
-                         :access-control-allow-methods [:get])))
+    (wrap-cors quixote-routes :access-control-allow-origin [#".*"]
+                              :access-control-allow-methods [:get])))
 
 (defn -main
   "Starts the web server."
