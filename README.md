@@ -44,7 +44,7 @@ Quixote is a Clojure API (generated via [Enlive](https://github.com/cgrand/enliv
 3. Start the web server on port 8080 (`λ lein run`)
 
 ## Deploying
-Quixote currently lives on Heroku at http://brass-mammoth.herokuapp.com/.
+Quixote currently lives on Heroku at http://cityshelf-api.herokuapp.com/.
 
 1. Test (`λ lein midje`)
 2. Deploy (`λ git push heroku master`)
