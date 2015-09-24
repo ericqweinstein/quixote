@@ -85,7 +85,7 @@
      :body "Not found"}))
 
 (def handler
-  "Handler helper function."
+  "API handler."
   (compojure.handler/api
     (wrap-cors quixote-routes :access-control-allow-origin [#".*"]
                               :access-control-allow-methods [:get])))
