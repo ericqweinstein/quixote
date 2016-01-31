@@ -23,3 +23,7 @@ node_modules/
 
 # Logs
 newrelic/logs
+
+# IntelliJ/Cursive
+.idea/
+quixote.iml

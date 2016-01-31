@@ -17,15 +17,15 @@
 
 (defmethod search :site [store query]
   (let [url (fetch-url (str (:storeLink store) "/search/site/" query))
-        title        (pmap html/text (html/select url [:.search-result :.title :a]))
-        author       (pmap html/text (html/select url [:.search-result :.abaproduct-details :p]))
-        price        (pmap #(subs % 1) (map html/text (html/select url [:.abaproduct-details :h3 :strong])))
-        image        (pmap #(get-in % [:attrs :src]) (html/select url [:.abaproduct-image :img]))
-        link         (pmap #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.search-result :.title :a])))
-        availability (pmap #(subs % 14)
+        title        (map html/text (html/select url [:.search-result :.title :a]))
+        author       (map html/text (html/select url [:.search-result :.abaproduct-details :p]))
+        price        (map #(subs % 1) (map html/text (html/select url [:.abaproduct-details :h3 :strong])))
+        image        (map #(get-in % [:attrs :src]) (html/select url [:.abaproduct-image :img]))
+        link         (map #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.search-result :.title :a])))
+        availability (map #(subs % 14)
                            (filter #(re-find #"Availability: ([a-zA-Z0-9 ]+)" %)
                                    (map html/text (html/select url [:.abaproduct-details :span]))))
-        isbn         (pmap #(subs % 9)
+        isbn         (map #(subs % 9)
                            (filter #(re-find #"ISBN-13: ([0-9 ]+)" %)
                                    (map html/text (html/select url [:.abaproduct-details :span]))))]
 
@@ -33,14 +33,14 @@
 
 (defmethod search :solr [store query]
   (let [url (fetch-url (str (:storeLink store) "/search/apachesolr_search/" query))
-        title        (pmap html/text (html/select url [:.abaproduct-title :a]))
-        author       (pmap #(string/trim %) (map html/text (html/select url [:.abaproduct-authors])))
-        price        (pmap #(subs % 1) (map html/text (html/select url [:.abaproduct-price])))
-        image        (pmap #(get-in % [:attrs :src]) (html/select url [:.abaproduct-image :img]))
-        link         (pmap #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.abaproduct-title :a])))
-        availability (pmap #(string/trim (second (re-find #"Availability: ([a-zA-Z0-9 ]+)" %)))
+        title        (map html/text (html/select url [:.abaproduct-title :a]))
+        author       (map #(string/trim %) (map html/text (html/select url [:.abaproduct-authors])))
+        price        (map #(subs % 1) (map html/text (html/select url [:.abaproduct-price])))
+        image        (map #(get-in % [:attrs :src]) (html/select url [:.abaproduct-image :img]))
+        link         (map #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.abaproduct-title :a])))
+        availability (map #(string/trim (second (re-find #"Availability: ([a-zA-Z0-9 ]+)" %)))
                            (map html/text (html/select url [:.abaproduct-more-details])))
-        isbn         (pmap #(string/trim (second (re-find #"ISBN-13: ([0-9 ]+)" %)))
+        isbn         (map #(string/trim (second (re-find #"ISBN-13: ([0-9 ]+)" %)))
                            (map html/text (html/select url [:.abaproduct-more-details])))]
 
     (structure store isbn title author image availability price)))
@@ -52,9 +52,9 @@
         title        (get-field "bookname" url)
         author       (get-field "author" url)
         price        (get-field "bookprice" url)
-        image        (pmap #(get-in % [:attrs :src]) (html/select url [[:td (html/attr= :width "127")] :img]))
-        link         (pmap #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:td :a])))
-        availability (pmap html/text (html/select url [[:td (html/attr= :width "81")] :strong :font]))
+        image        (map #(get-in % [:attrs :src]) (html/select url [[:td (html/attr= :width "127")] :img]))
+        link         (map #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:td :a])))
+        availability (map html/text (html/select url [[:td (html/attr= :width "81")] :strong :font]))
         isbn         (get-field "sku" url)]
 
     (structure store isbn title author image availability price)))
@@ -63,20 +63,20 @@
 ;; but they're important, so we accommodate them. (EQW 19 Jul 2015)
 (defmethod search :powells [store query]
   (let [url (fetch-url (str (:storeLink store) "/s?kw=" query "&class="))
-        title        (pmap html/text (html/select url [:.book-title]))
-        author       (pmap html/text (html/select url [:.book-info :cite]))
-        price        (pmap #(re-find (re-pattern "\\d+\\.\\d{2}") %) (map html/text (html/select url [:.price])))
-        image        (pmap #(get-in % [:attrs :src]) (html/select url [:.bookcover]))
-        link         (pmap #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.book-title :a])))
-        availability (pmap #(get-in % [:attrs :src]) (html/select url [:.add-to-cart-button]))
-        isbn         (pmap #(re-find (re-pattern "\\d{13}") %) image)]
+        title        (map html/text (html/select url [:.book-title]))
+        author       (map html/text (html/select url [:.book-info :cite]))
+        price        (map #(re-find (re-pattern "\\d+\\.\\d{2}") %) (map html/text (html/select url [:.price])))
+        image        (map #(get-in % [:attrs :src]) (html/select url [:.bookcover]))
+        link         (map #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.book-title :a])))
+        availability (map #(get-in % [:attrs :src]) (html/select url [:.add-to-cart-button]))
+        isbn         (map #(re-find (re-pattern "\\d{13}") %) image)]
 
     (structure store isbn title author image availability price)))
 
 (defn- get-field
   "Extracts the provided field from the provided URL."
   [field url]
-  (pmap #(get-in % [:attrs :value]) (html/select url [:form (html/attr= :name field)])))
+  (map #(get-in % [:attrs :value]) (html/select url [:form (html/attr= :name field)])))
 
 (defn- structure
   "Structures the scraped data into a usable map."
