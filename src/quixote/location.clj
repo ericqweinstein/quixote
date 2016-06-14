@@ -26,8 +26,8 @@
     "Calculates Euclidean distance between two points."
     [x1 x2 y1 y2]
     (math/sqrt (+
-                 (square  (- x1 x2))
-                 (square  (- y1 y2)))))
+                 (square (- x1 x2))
+                 (square (- y1 y2)))))
 
 (defn- square
   "Squares the provided number."

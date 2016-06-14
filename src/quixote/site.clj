@@ -21,7 +21,6 @@
         author       (map html/text (html/select url [:.search-result :.abaproduct-details :p]))
         price        (map #(subs % 1) (map html/text (html/select url [:.abaproduct-details :h3 :strong])))
         image        (map #(get-in % [:attrs :src]) (html/select url [:.abaproduct-image :img]))
-        link         (map #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.search-result :.title :a])))
         availability (map #(subs % 14)
                            (filter #(re-find #"Availability: ([a-zA-Z0-9 ]+)" %)
                                    (map html/text (html/select url [:.abaproduct-details :span]))))
@@ -37,7 +36,6 @@
         author       (map #(string/trim %) (map html/text (html/select url [:.abaproduct-authors])))
         price        (map #(subs % 1) (map html/text (html/select url [:.abaproduct-price])))
         image        (map #(get-in % [:attrs :src]) (html/select url [:.abaproduct-image :img]))
-        link         (map #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.abaproduct-title :a])))
         availability (map #(string/trim (second (re-find #"Availability: ([a-zA-Z0-9 ]+)" %)))
                            (map html/text (html/select url [:.abaproduct-more-details])))
         isbn         (map #(string/trim (second (re-find #"ISBN-13: ([0-9 ]+)" %)))
@@ -45,29 +43,23 @@
 
     (structure store isbn title author image availability price)))
 
-;; I honestly don't remember why we included this one. I think we
-;; wanted to prove we could handle special snowflakes. (EQW 19 Jul 2015)
 (defmethod search :booksite [store query]
   (let [url (fetch-url (str (:storeLink store) "/search/?q=" query))
         title        (get-field "bookname" url)
         author       (get-field "author" url)
         price        (get-field "bookprice" url)
         image        (map #(get-in % [:attrs :src]) (html/select url [[:td (html/attr= :width "127")] :img]))
-        link         (map #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:td :a])))
         availability (map html/text (html/select url [[:td (html/attr= :width "81")] :strong :font]))
         isbn         (get-field "sku" url)]
 
     (structure store isbn title author image availability price)))
 
-;; Powell's Books doesn't use one of the ABA's shared solutions,
-;; but they're important, so we accommodate them. (EQW 19 Jul 2015)
 (defmethod search :powells [store query]
   (let [url (fetch-url (str (:storeLink store) "/s?kw=" query "&class="))
         title        (map html/text (html/select url [:.book-title]))
         author       (map html/text (html/select url [:.book-info :cite]))
         price        (map #(re-find (re-pattern "\\d+\\.\\d{2}") %) (map html/text (html/select url [:.price])))
         image        (map #(get-in % [:attrs :src]) (html/select url [:.bookcover]))
-        link         (map #(str (:storeLink store) %) (map #(get-in % [:attrs :href]) (html/select url [:.book-title :a])))
         availability (map #(get-in % [:attrs :src]) (html/select url [:.add-to-cart-button]))
         isbn         (map #(re-find (re-pattern "\\d{13}") %) image)]
 

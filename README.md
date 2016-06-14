@@ -61,4 +61,4 @@ Quixote currently lives on Heroku at http://cityshelf-api.herokuapp.com/.
 You can generate documentation with `λ lein doc`.
 
 ## License
-Copyright © 2015 CityShelf. All rights reserved.
+MIT (see LICENSE).

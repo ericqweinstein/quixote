@@ -40,8 +40,8 @@
   :allowed-methods [:get]
   :handle-ok (fn [_]
                (let [city (location/nearest
-                           (Float/parseFloat latitude)
-                           (Float/parseFloat longitude))]
+                            (Float/parseFloat latitude)
+                            (Float/parseFloat longitude))]
                  (filter #(= city (:city %)) store-data))))
 
 (defresource indies [stores query latitude longitude]
@@ -49,8 +49,8 @@
   :allowed-methods [:get]
   :handle-ok (fn [_]
                (let [city (location/nearest
-                           (Float/parseFloat latitude)
-                           (Float/parseFloat longitude))
+                            (Float/parseFloat latitude)
+                            (Float/parseFloat longitude))
                      data (flatten (map #(scrape % query)
                             (filter #(= city (:city %)) stores)))]
                   (vector (pivot data)))))
